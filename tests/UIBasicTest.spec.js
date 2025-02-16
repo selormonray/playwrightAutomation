@@ -59,7 +59,10 @@ test.only("UI Control Test", async ({ page }) => {
 
   await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
   await loginDropdown.selectOption("Teacher"); //put the value inside the select function
-  await page.pause();
+  // await page.pause();
+  // selecting a button
+  await page.locator(".radiotextsty").last().click();
+  await page.locator("#okayBtn").click();
 });
 
 // directly opens browser without calling the step by step steps
