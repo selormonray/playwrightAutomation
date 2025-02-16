@@ -56,4 +56,3 @@ test.only("Test 2", async ({ browser }) => {
 test("Test Case Name 2", async ({ page }) => {
   await page.goto("https://www.google.com/");
 });
-3;
