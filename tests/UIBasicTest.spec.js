@@ -56,13 +56,23 @@ test.only("UI Control Test", async ({ page }) => {
   const userName = page.locator("#username");
   const signIn = page.locator("#signInBtn");
   const loginDropdown = page.locator("select.form-control");
+  const agreeCheckBoxBtn = page.locator("#terms");
 
   await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
   await loginDropdown.selectOption("Teacher"); //put the value inside the select function
-  // await page.pause();
+
   // selecting a button
   await page.locator(".radiotextsty").last().click();
+  // verify the radio button was actually clicked
+  await expect(page.locator(".radiotextsty").last()).toBeChecked();
+  await page.locator(".radiotextsty").last().isChecked();
   await page.locator("#okayBtn").click();
+
+  // await agreeCheckBoxBtn.click();
+  await page.locator("#terms").click();
+  await expect(page.locator("#terms")).toBeChecked();
+
+  await page.pause();
 });
 
 // directly opens browser without calling the step by step steps
