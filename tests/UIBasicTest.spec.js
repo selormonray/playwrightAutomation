@@ -25,7 +25,7 @@ test("Test Case Name 1", async ({ browser }) => {
   await expect(usernameLocator).toBeVisible();
 });
 
-test.only("Test 2", async ({ browser }) => {
+test("Test 2", async ({ browser }) => {
   const context = await browser.newContext();
   const page = await context.newPage();
 
@@ -50,6 +50,16 @@ test.only("Test 2", async ({ browser }) => {
 
   const allTitles = await cardTitles.allTextContents();
   console.log(allTitles);
+});
+
+test.only("UI Control Test", async ({ page }) => {
+  const userName = page.locator("#username");
+  const signIn = page.locator("#signInBtn");
+  const loginDropdown = page.locator("select.form-control");
+
+  await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
+  await loginDropdown.selectOption("Teacher"); //put the value inside the select function
+  await page.pause();
 });
 
 // directly opens browser without calling the step by step steps
