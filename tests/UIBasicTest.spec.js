@@ -55,24 +55,28 @@ test("Test 2", async ({ browser }) => {
 test.only("UI Control Test", async ({ page }) => {
   const userName = page.locator("#username");
   const signIn = page.locator("#signInBtn");
+  const userRadioBtn = page.locator(".radiotextsty").last();
   const loginDropdown = page.locator("select.form-control");
   const agreeCheckBoxBtn = page.locator("#terms");
+  const okayBtn = page.locator("#okayBtn");
 
   await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
   await loginDropdown.selectOption("Teacher"); //put the value inside the select function
 
   // selecting a button
-  await page.locator(".radiotextsty").last().click();
+  await userRadioBtn.click();
+
   // verify the radio button was actually clicked
-  await expect(page.locator(".radiotextsty").last()).toBeChecked();
-  await page.locator(".radiotextsty").last().isChecked();
-  await page.locator("#okayBtn").click();
+  await expect(userRadioBtn).toBeChecked();
+  await userRadioBtn.isChecked();
+  await okayBtn.click();
 
   // await agreeCheckBoxBtn.click();
-  await page.locator("#terms").click();
-  await expect(page.locator("#terms")).toBeChecked();
+  await agreeCheckBoxBtn.click();
 
-  await page.pause();
+  // verify checkbox was checked
+  await expect(agreeCheckBoxBtn).toBeChecked();
+  await agreeCheckBoxBtn.isChecked();
 });
 
 // directly opens browser without calling the step by step steps
