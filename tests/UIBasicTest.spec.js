@@ -59,6 +59,7 @@ test.only("UI Control Test", async ({ page }) => {
   const loginDropdown = page.locator("select.form-control");
   const agreeCheckBoxBtn = page.locator("#terms");
   const okayBtn = page.locator("#okayBtn");
+  const blinkingTextLocator = page.locator("[href*='documents-request']");
 
   await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
   await loginDropdown.selectOption("Teacher"); //put the value inside the select function
@@ -77,6 +78,9 @@ test.only("UI Control Test", async ({ page }) => {
   // verify checkbox was checked
   await expect(agreeCheckBoxBtn).toBeChecked();
   await agreeCheckBoxBtn.isChecked();
+
+  // checking attribute value of blinking text
+  await expect(blinkingTextLocator).toHaveAttribute("class", "blinkingText");
 });
 
 // directly opens browser without calling the step by step steps
