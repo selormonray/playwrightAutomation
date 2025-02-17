@@ -108,12 +108,12 @@ test.only("Handling Child Elements", async ({browser}) => {
     * Promise.all([...]) ensures that both the click action and waiting
     *  for the new page event happen together.
     * */
-    const [newPage] = Promise.all([
+    const [newPage] = await Promise.all([
         context.waitForEvent('page'),
         blinkingTextLocator.click()
     ]);
 
-    let redText = newPage.locator(".im-para.red");
+    let redText = await newPage.locator(".im-para.red").textContent();
     console.log(redText);
 
 });
