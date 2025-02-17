@@ -52,7 +52,7 @@ test("Test 2", async ({ browser }) => {
   console.log(allTitles);
 });
 
-test.only("UI Control Test", async ({ page }) => {
+test("UI Control Test", async ({ page }) => {
   const userName = page.locator("#username");
   const signIn = page.locator("#signInBtn");
   const userRadioBtn = page.locator(".radiotextsty").last();
@@ -83,7 +83,9 @@ test.only("UI Control Test", async ({ page }) => {
   await expect(blinkingTextLocator).toHaveAttribute("class", "blinkingText");
 });
 
-// directly opens browser without calling the step by step steps
 test("Test Case Name 2", async ({ page }) => {
   await page.goto("https://www.google.com/");
 });
+
+// directly opens browser without calling the step by step steps
+test("Handling Child Elements", async ({ page }) => {});
