@@ -52,7 +52,7 @@ test("Test 2", async ({browser}) => {
     console.log(allTitles);
 });
 
-test("UI Control Test", async ({page}) => {
+test.only("UI Control Test", async ({page}) => {
     const userName = page.locator("#username");
     const signIn = page.locator("#signInBtn");
     const userRadioBtn = page.locator(".radiotextsty").last();
@@ -88,7 +88,7 @@ test("Test Case Name 2", async ({page}) => {
 });
 
 // directly opens browser without calling the step by step steps
-test.only("Handling Child Elements", async ({browser}) => {
+test("Handling Child Elements", async ({browser}) => {
 
     const context = await browser.newContext();
     const page = await context.newPage();
