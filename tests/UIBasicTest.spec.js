@@ -113,7 +113,16 @@ test.only("Handling Child Elements", async ({browser}) => {
         blinkingTextLocator.click()
     ]);
 
-    let redText = await newPage.locator(".im-para.red").textContent();
-    console.log(redText);
+
+    // pull email ID from child tab and use it on the parent tab
+    // split the text grabbed in the variable redText
+
+    const redText = await newPage.locator(".im-para.red").textContent();
+    const arrayText =  redText.split("@")
+    const domain = arrayText[1].split(" ")[0]
+    console.log(domain);
+
+
+
 
 });
