@@ -120,9 +120,11 @@ test.only("Handling Child Elements", async ({browser}) => {
     const redText = await newPage.locator(".im-para.red").textContent();
     const arrayText =  redText.split("@")
     const domain = arrayText[1].split(" ")[0]
-    console.log(domain);
+    // console.log(domain);
 
-
-
+    // now switch back to the parent tab and continue with execution
+    await userName.fill(domain);
+    // await page.pause();
+    console.log(userName.textContent());
 
 });
