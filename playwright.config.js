@@ -32,6 +32,7 @@ export default defineConfig({
     browserName: "chromium",
     headless: false,
     screenshot: "on",
+    trace: 'on',
   },
 
   // dirves
