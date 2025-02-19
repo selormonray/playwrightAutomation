@@ -110,8 +110,6 @@ test("Handling Child Elements", async ({browser}) => {
         context.waitForEvent('page'),
         blinkingTextLocator.click()
     ]);
-
-
     // pull email ID from child tab and use it on the parent tab
     // split the text grabbed in the variable redText
 
