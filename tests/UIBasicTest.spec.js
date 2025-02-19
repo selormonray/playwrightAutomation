@@ -52,7 +52,7 @@ test("Test 2", async ({browser}) => {
     console.log(allTitles);
 });
 
-test.only("UI Control Test", async ({page}) => {
+test("UI Control Test", async ({page}) => {
     const userName = page.locator("#username");
     const signIn = page.locator("#signInBtn");
     const userRadioBtn = page.locator(".radiotextsty").last();
@@ -96,9 +96,7 @@ test("Handling Child Elements", async ({browser}) => {
     const userName = page.locator("#username");
     const blinkingTextLocator = page.locator("[href*='documents-request']");
 
-    await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
-
-    /***
+    await page.goto("https://rahulshettyacademy.com/loginpagePractise/");    /***
     //this listens for any new page opening - the promise could be pending, fulfilled or rejected
     await context.waitForEvent('page');
     await blinkingTextLocator.click(); // new page gets opened here
@@ -124,7 +122,6 @@ test("Handling Child Elements", async ({browser}) => {
 
     // now switch back to the parent tab and continue with execution
     await userName.fill(domain);
-    // await page.pause();
     console.log(userName.textContent());
 
 });
