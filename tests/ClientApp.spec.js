@@ -8,6 +8,8 @@ test("Client App Login", async ({page}) => {
     const forgotPasswordLink = page.locator(".forgot-password-link");
     const automationTestPracticeTextSelector = page.locator("div[class='left mt-1'] p");
     const redBlinkTextSelector = page.locator(".m-2.blink_me");
+    const products = page.locator(".card-body");
+    const productName = "IPHONE 13 PRO";
 
     await page.goto("https://rahulshettyacademy.com/client");
     await emailSelector.fill("selormonray14@gmail.com");
@@ -15,5 +17,16 @@ test("Client App Login", async ({page}) => {
     await loginButton.click();
     await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
     await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
+
+    const productsCount = await products.count();
+    // loop through the product count
+    for ( let i = 0; i < productsCount; i++ ) {
+       if (await products.nth(i).locator("b").textContent() === productName ) {
+           console.log("This is my desired product name");
+           // if the desired product is found, add to cart
+           await products.nth(i).locator("text= Add To Cart").click();
+           break;
+       }
+    }
 
 });
