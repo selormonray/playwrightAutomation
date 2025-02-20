@@ -10,6 +10,8 @@ test("Client App Login", async ({page}) => {
     const redBlinkTextSelector = page.locator(".m-2.blink_me");
     const products = page.locator(".card-body");
     const productName = "IPHONE 13 PRO";
+    const successSelector = page.locator("div[aria-label='Product Added To Cart']");
+
 
     await page.goto("https://rahulshettyacademy.com/client");
     await emailSelector.fill("selormonray14@gmail.com");
@@ -22,11 +24,10 @@ test("Client App Login", async ({page}) => {
     // loop through the product count
     for ( let i = 0; i < productsCount; i++ ) {
        if (await products.nth(i).locator("b").textContent() === productName ) {
-           console.log("This is my desired product name");
-           // if the desired product is found, add to cart
            await products.nth(i).locator("text= Add To Cart").click();
            break;
        }
     }
+    await expect(successSelector).toBeVisible();
 
 });
