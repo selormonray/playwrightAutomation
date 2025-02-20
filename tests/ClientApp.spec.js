@@ -11,6 +11,7 @@ test("Client App Login", async ({page}) => {
     const products = page.locator(".card-body");
     const productName = "IPHONE 13 PRO";
     const successSelector = page.locator("div[aria-label='Product Added To Cart']");
+    const cartSelector = page.locator("[routerlink='/dashboard/cart']");
 
 
     await page.goto("https://rahulshettyacademy.com/client");
@@ -21,7 +22,7 @@ test("Client App Login", async ({page}) => {
     await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
 
     const productsCount = await products.count();
-    // loop through the product count
+    // loop through the products on the page and click on the product you desire
     for ( let i = 0; i < productsCount; i++ ) {
        if (await products.nth(i).locator("b").textContent() === productName ) {
            await products.nth(i).locator("text= Add To Cart").click();
@@ -29,5 +30,12 @@ test("Client App Login", async ({page}) => {
        }
     }
     await expect(successSelector).toBeVisible();
+    await cartSelector.click();
+
+    // we expect item added to cart to be present
+    const bool = await page.locator("h3:has-text('IPHONE 13 PRO')").isVisible();
+    expect(bool).toBe(true);
+    expect(bool).toBeTruthy();
+
 
 });
