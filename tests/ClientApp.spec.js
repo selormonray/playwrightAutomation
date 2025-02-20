@@ -12,6 +12,7 @@ test("Client App Login", async ({page}) => {
     const productName = "IPHONE 13 PRO";
     const successSelector = page.locator("div[aria-label='Product Added To Cart']");
     const cartSelector = page.locator("[routerlink='/dashboard/cart']");
+    const cartItemSelector = page.locator("div li");
 
 
     await page.goto("https://rahulshettyacademy.com/client");
@@ -29,10 +30,14 @@ test("Client App Login", async ({page}) => {
            break;
        }
     }
+    // await successSelector.waitFor();
     await expect(successSelector).toBeVisible();
     await cartSelector.click();
 
     // we expect item added to cart to be present
+
+    // wait for list of items on cart to load
+    await cartItemSelector.first().waitFor();
     const bool = await page.locator("h3:has-text('IPHONE 13 PRO')").isVisible();
     expect(bool).toBe(true);
     expect(bool).toBeTruthy();
