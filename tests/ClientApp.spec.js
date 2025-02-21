@@ -49,14 +49,14 @@ test("Client App Login", async ({page}) => {
     await checkoutButton.click();
     // await page.pause();
 
-    // fill country sequentially and handling auto suggestion dropdown
+    // fill country sequentially and handling autosuggestion dropdown
     await countrySelector.pressSequentially("ind");
     const countryDropdownOptions = page.locator(".ta-results");
     await countryDropdownOptions.waitFor();
     const countryOptionsCount = await countryDropdownOptions.locator("button").count();
     for ( let i = 0; i < countryOptionsCount; i++ ) {
        const text = await countryDropdownOptions.locator("button").nth(i).textContent();
-       if (text === " India") {
+       if (text.trim() === " India") {
            await countryDropdownOptions.locator("button").click();
            break;
        }
