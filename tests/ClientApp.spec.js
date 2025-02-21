@@ -14,6 +14,7 @@ test("Client App Login", async ({page}) => {
     const cartSelector = page.locator("[routerlink='/dashboard/cart']");
     const cartItemSelector = page.locator("div li");
     const checkoutButton = page.locator("li[class='totalRow'] button[type='button']");
+    const countrySelector = page.locator("input[placeholder='Select Country']");
 
 
     await page.goto("https://rahulshettyacademy.com/client");
@@ -46,8 +47,23 @@ test("Client App Login", async ({page}) => {
 
     // go to checkout
     await checkoutButton.click();
-    await page.pause();
+    // await page.pause();
 
+    // fill country sequentially
+    await countrySelector.pressSequentially("ind");
+    const countryDropdownOptions = page.locator(".ta-results");
+    await countryDropdownOptions.waitFor();
+    const countryOptionsCount = await countryDropdownOptions.locator("button").count();
+    for ( let i = 0; i < countryOptionsCount; i++ ) {
+       const text = await countryDropdownOptions.locator("button").nth(i).textContent();
+       if (text === " India") {
+           await countryDropdownOptions.locator("button").click();
+           break;
+       }
+    }
+
+
+    await page.pause();
 
 
 });
