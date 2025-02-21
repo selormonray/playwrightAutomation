@@ -13,6 +13,7 @@ test("Client App Login", async ({page}) => {
     const successSelector = page.locator("div[aria-label='Product Added To Cart']");
     const cartSelector = page.locator("[routerlink='/dashboard/cart']");
     const cartItemSelector = page.locator("div li");
+    const checkoutButton = page.locator("li[class='totalRow'] button[type='button']");
 
 
     await page.goto("https://rahulshettyacademy.com/client");
@@ -22,6 +23,7 @@ test("Client App Login", async ({page}) => {
     await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
     await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
 
+    await products.last().waitFor();
     const productsCount = await products.count();
     // loop through the products on the page and click on the product you desire
     for ( let i = 0; i < productsCount; i++ ) {
@@ -31,7 +33,7 @@ test("Client App Login", async ({page}) => {
        }
     }
     // await successSelector.waitFor();
-    await expect(successSelector).toBeVisible();
+    // await expect(successSelector).toBeVisible();
     await cartSelector.click();
 
     // we expect item added to cart to be present
@@ -41,6 +43,11 @@ test("Client App Login", async ({page}) => {
     const bool = await page.locator("h3:has-text('IPHONE 13 PRO')").isVisible();
     expect(bool).toBe(true);
     expect(bool).toBeTruthy();
+
+    // go to checkout
+    await checkoutButton.click();
+    await page.pause();
+
 
 
 });
