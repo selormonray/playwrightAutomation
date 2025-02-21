@@ -63,7 +63,7 @@ test("Client App Login", async ({page}) => {
     }
 
 
-    await page.pause();
+
 
 
 });
