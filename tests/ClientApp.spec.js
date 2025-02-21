@@ -49,7 +49,7 @@ test("Client App Login", async ({page}) => {
     await checkoutButton.click();
     // await page.pause();
 
-    // fill country sequentially
+    // fill country sequentially and handling auto suggestion dropdown
     await countrySelector.pressSequentially("ind");
     const countryDropdownOptions = page.locator(".ta-results");
     await countryDropdownOptions.waitFor();
@@ -62,7 +62,7 @@ test("Client App Login", async ({page}) => {
        }
     }
 
-
+    await page.pause();
 
 
 
