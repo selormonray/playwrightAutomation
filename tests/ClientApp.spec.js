@@ -20,6 +20,11 @@ test("Client App Login", async ({page}) => {
     const placeOrderButton = page.locator(".btnn.action__submit");
     const thankYouOrderSelector = page.locator(".hero-primary");
     const thankYouText = " Thankyou for the order. ";
+    const ordersSelector = page.locator(".btn.btn-custom[routerlink='/dashboard/myorders']");
+    const orderListSelector = page.locator("tbody .ng-star-inserted");
+    const orderIdSelector = page.locator("label[class='ng-star-inserted']");
+    const viewButtonSelectors = page.locator("tbody .btn.btn-primary");
+    const orderSummaryOrderIdSelector = page.locator(".col-text.-main");
 
 
     await page.goto("https://rahulshettyacademy.com/client");
@@ -72,5 +77,32 @@ test("Client App Login", async ({page}) => {
     await placeOrderButton.click();
     await thankYouOrderSelector.isVisible();
     await expect(thankYouOrderSelector).toContainText(thankYouText.trim());
+    // get the text content from the orderID selector
+    const orderId = await orderIdSelector.textContent();
 
+    await ordersSelector.click();
+    await orderListSelector.isVisible();
+    // iterate through the order list and find your order and view
+    const count = await orderListSelector.count();
+    for (let i = 0; i < count; i++) {
+        // Get the text content of the current order list element
+        const textContent = await orderListSelector.nth(i).textContent();
+
+        // Check if the text content matches the orderId
+        if (textContent.includes(orderId)) {
+            // Find the "View" button in the same block as the matching orderId
+            const viewButton = viewButtonSelectors.nth(i);
+
+            // Ensure the button has the text "View"
+            const buttonText = await viewButton.textContent();
+            if (buttonText.includes("View")) {
+                // Click the "View" button
+                await viewButton.click();
+                break; // Exit the loop after clicking the button
+            }
+        }
+    }
+
+
+    await page.pause();
 });
