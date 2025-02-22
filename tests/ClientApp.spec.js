@@ -81,35 +81,21 @@ test("Client App Login", async ({page}) => {
     const orderId = await orderIdSelector.textContent();
 
     await ordersSelector.click();
-    await orderListSelector.isVisible();
+    await orderListSelector.first().waitFor();
     // iterate through the order list and find your order and view
-    const count = await orderListSelector.count();
-    for (let i = 0; i < count; i++) {
-        // Get the text content of the current order list element
-        const textContent = await orderListSelector.nth(i).textContent();
 
-        // Check if the text content matches the orderId
-        if (textContent.includes(orderId)) {
-            // Find the "View" button in the same block as the matching orderId
-            const viewButton = viewButtonSelectors.nth(i);
+    console.log(orderId);
+    const rows = await page.locator("tbody tr");
 
-            // Ensure the button has the text "View"
-            const buttonText = await viewButton.textContent();
-            if (buttonText.includes("View")) {
-                // Click the "View" button
-                await viewButton.click();
-                break; // Exit the loop after clicking the button
-            }
+
+    for (let i = 0; i < await rows.count(); ++i) {
+        const rowOrderId = await rows.nth(i).locator("th").textContent();
+        if (orderId.includes(rowOrderId)) {
+            await rows.nth(i).locator("button").first().click();
+            break;
         }
     }
-    await orderSummaryOrderIdSelector.isVisible();
-    const orderSummaryOrderId = await orderSummaryOrderIdSelector.textContent();
+    const orderIdDetails = await page.locator(".col-text").textContent();
+    expect(orderId.includes(orderIdDetails)).toBeTruthy();
 
-        if (orderSummaryOrderId === orderId) {
-            console.log("The orderID matches!");
-            expect(orderSummaryOrderId).toBe(orderId); // Assertion inside if block
-        } else {
-            console.error("The orderID do not match!");
-            expect(orderSummaryOrderId).toBe(orderId); // This will fail the test
-        }
 });
