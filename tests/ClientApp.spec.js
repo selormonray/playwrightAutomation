@@ -15,6 +15,11 @@ test("Client App Login", async ({page}) => {
     const cartItemSelector = page.locator("div li");
     const checkoutButton = page.locator("li[class='totalRow'] button[type='button']");
     const countrySelector = page.locator("input[placeholder='Select Country']");
+    const cvvCodeSelector = page.locator("input[type='text']").nth(1);
+    const nameOnCardSelector = page.locator("input[type='text']").nth(2);
+    const placeOrderButton = page.locator(".btnn.action__submit");
+    const thankYouOrderSelector = page.locator(".hero-primary");
+    const thankYouText = " Thankyou for the order. ";
 
 
     await page.goto("https://rahulshettyacademy.com/client");
@@ -47,23 +52,25 @@ test("Client App Login", async ({page}) => {
 
     // go to checkout
     await checkoutButton.click();
-    // await page.pause();
+    await cvvCodeSelector.fill("225");
+    await nameOnCardSelector.fill("Sel Onray");
 
     // fill country sequentially and handling autosuggestion dropdown
-    await countrySelector.pressSequentially("ind");
+    await countrySelector.pressSequentially("india");
     const countryDropdownOptions = page.locator(".ta-results");
     await countryDropdownOptions.waitFor();
     const countryOptionsCount = await countryDropdownOptions.locator("button").count();
-    for ( let i = 0; i < countryOptionsCount; i++ ) {
-       const text = await countryDropdownOptions.locator("button").nth(i).textContent();
-       if (text.trim() === " India") {
-           await countryDropdownOptions.locator("button").click();
-           break;
-       }
+
+    for (let i = 0; i < countryOptionsCount; i++) {
+        const text = await countryDropdownOptions.locator("button").nth(i).textContent();
+        if (text?.trim() === "India") {  // Use trim() to avoid space issues
+            await countryDropdownOptions.locator("button").nth(i).click();  // Ensure correct button is clicked
+            break;
+        }
     }
 
-    await page.pause();
-
-
+    await placeOrderButton.click();
+    await thankYouOrderSelector.isVisible();
+    await expect(thankYouOrderSelector).toContainText(thankYouText.trim());
 
 });
