@@ -102,7 +102,14 @@ test("Client App Login", async ({page}) => {
             }
         }
     }
+    await orderSummaryOrderIdSelector.isVisible();
+    const orderSummaryOrderId = await orderSummaryOrderIdSelector.textContent();
 
-
-    await page.pause();
+        if (orderSummaryOrderId === orderId) {
+            console.log("The orderID matches!");
+            expect(orderSummaryOrderId).toBe(orderId); // Assertion inside if block
+        } else {
+            console.error("The orderID do not match!");
+            expect(orderSummaryOrderId).toBe(orderId); // This will fail the test
+        }
 });
