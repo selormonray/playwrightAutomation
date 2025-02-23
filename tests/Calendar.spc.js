@@ -11,6 +11,11 @@ test("Calendar validations", async ({page}) => {
     await page.goto("https://rahulshettyacademy.com/seleniumPractise");
     await topDealSelector.click();
     await calendarSelector.click();
+    await page.locator("react-calendar__navigation__label").click();
+    await page.locator("react-calendar__navigation__label").click();
+    await page.getByText(year).click();
+    await page.locator(".react-calendar__tile").nth(Number(monthNumber) - 1);
+    await page.locator("//abbr[text()='"+ date +"']").click();
 
 
 });
