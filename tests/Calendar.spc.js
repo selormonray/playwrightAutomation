@@ -1,0 +1,16 @@
+const {test, expect} = require("@playwright/test");
+
+test("Calendar validations", async ({page}) => {
+
+    const monthNumber = "6"
+    const date = "15"
+    const year = "2027"
+    const topDealSelector = page.locator(".cart-header-navlink[href='#/offers']");
+    const calendarSelector = page.locator(".react-date-picker__inputGroup");
+
+    await page.goto("https://rahulshettyacademy.com/seleniumPractise");
+    await topDealSelector.click();
+    await calendarSelector.click();
+
+
+});
