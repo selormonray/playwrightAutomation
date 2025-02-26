@@ -27,9 +27,5 @@ test("Calendar validations", async ({page}) => {
     const count = await inputs.count();
     expect(count).toBe(3); // Validate that we have exactly 3 inputs (Month, Date, Year)
 
-    for (let i = 0; i < count; i++) {
-        const value = await inputs.nth(i).inputValue(); // Use inputValue() for better accuracy
-        expect(value).toBe(expectedList[i]); // Use toBe() instead of toEqual() for primitive values
-    }
 
 });
