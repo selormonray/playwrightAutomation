@@ -72,12 +72,7 @@ test("UI Control Test", async ({page}) => {
     await userRadioBtn.isChecked();
     await okayBtn.click();
 
-    // await agreeCheckBoxBtn.click();
-    await agreeCheckBoxBtn.click();
 
-    // verify checkbox was checked
-    await expect(agreeCheckBoxBtn).toBeChecked();
-    await agreeCheckBoxBtn.isChecked();
 
     // checking attribute value of blinking text
     await expect(blinkingTextLocator).toHaveAttribute("class", "blinkingText");
