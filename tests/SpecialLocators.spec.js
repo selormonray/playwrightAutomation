@@ -28,5 +28,8 @@ test('@Webst Client App login', async ({ page }) => {
 
     await page.getByPlaceholder("Select Country").pressSequentially("ind");
 
+    await page.getByRole("button",{name :"India"}).nth(1).click();
+    await page.getByText("PLACE ORDER").click();
 
+    await expect(page.getByText("Thankyou for the order.")).toBeVisible();
 })
