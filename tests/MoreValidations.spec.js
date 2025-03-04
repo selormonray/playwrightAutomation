@@ -7,6 +7,8 @@ test("Pop Up Validations", async ({page}) => {
     const hideSelector = await page.locator("#hide-textbox");
     const confirmButton = await page.locator("#confirmbtn");
     const mouseHoverButton = await page.locator("#mousehover");
+    // const frameLocator = await page.locator("#courses-iframe");
+    const lifeT.
 
 
     await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
@@ -17,6 +19,12 @@ test("Pop Up Validations", async ({page}) => {
 
     // hovering over an element
     await mouseHoverButton.hover();
+
+    const framesPage = page.locator("#course-frame");
+    framesPage = framesPage.locator("#course-frame");
+
+    // there are so manyu things that are needed in thjis regard
+
 
 
 
