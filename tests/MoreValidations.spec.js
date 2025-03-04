@@ -23,7 +23,6 @@ test("Pop Up Validations", async ({page}) => {
     const framesPage = page.locator("#course-frame");
     framesPage = framesPage.locator("#course-frame");
 
-    // there are so manyu things that are needed in thjis regard
 
 
 
