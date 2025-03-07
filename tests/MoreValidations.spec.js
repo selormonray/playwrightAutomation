@@ -21,7 +21,7 @@ test("Pop Up Validations", async ({page}) => {
 
     const framesPage = page.locator("#course-frame");
     await framesPage.locator("li a[href*='lifetime-access']:visible").click();
-
+    const textCheck = await framesPage.locator(".text h2").textContent();
 
 
 
