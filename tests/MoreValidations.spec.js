@@ -20,7 +20,7 @@ test("Pop Up Validations", async ({page}) => {
     await mouseHoverButton.hover();
 
     const framesPage = page.locator("#course-frame");
-    await framesPage.locator("li a[href*='lifetime-access']:visible").click();
+    await framesPage.locator(".new-navbar-highlighter[href='lifetime-access']").click();
     const textCheck = await framesPage.locator(".text h2").textContent();
 
     console.log(textCheck.split(" ")[1]);
