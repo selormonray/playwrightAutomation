@@ -17,19 +17,11 @@ test("Pop Up Validations", async ({page}) => {
     page.on('dialog', dialog => dialog.dismiss()); //handling Java/JS pop ups
 
     // hovering over an element
-    await mouseHoverButton.hover();
+    // await mouseHoverButton.hover();
 
     const framesPage = page.locator("#course-frame");
     await framesPage.locator(".new-navbar-highlighter[href='lifetime-access']").click();
     const textCheck = await framesPage.locator(".text h2").textContent();
 
     console.log(textCheck.split(" ")[1]);
-
-
-
-
-
-
-
-
 })
