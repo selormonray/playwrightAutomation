@@ -7,8 +7,7 @@ test("Pop Up Validations", async ({page}) => {
     const hideSelector = await page.locator("#hide-textbox");
     const confirmButton = await page.locator("#confirmbtn");
     const mouseHoverButton = await page.locator("#mousehover");
-    // const frameLocator = await page.locator("#courses-iframe");
-    const lifeT.
+    const frameLocator = await page.locator("#courses-iframe");
 
 
     await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
@@ -21,7 +20,9 @@ test("Pop Up Validations", async ({page}) => {
     await mouseHoverButton.hover();
 
     const framesPage = page.locator("#course-frame");
-    framesPage = framesPage.locator("#course-frame");
+    await framesPage.locator("li a[href*='lifetime-access']:visible").click();
+
+
 
 
 
