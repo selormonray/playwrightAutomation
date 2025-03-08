@@ -9,6 +9,7 @@ test.beforeAll(async () => {
     const loginResponse = apiContext.post("https://rahulshettyacademy.com/api/ecom/auth/login",
         {data: loginPayLoad}
     )
+    expect((await loginResponse).ok()).toBeTruthy();
 });
 
 
