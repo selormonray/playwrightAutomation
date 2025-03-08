@@ -4,12 +4,23 @@ const {test, expect, request} = require("@playwright/test");
 const loginPayLoad = {userEmail: "selormonray14@gmail.com", userPassword: "playwrightTester14"}
 
 
+/*
+*  Sets up an API context
+*  Sends a POST request to log in
+*  Ensures the response is successful
+*  Extracts and stores the authentication token
+* */
+
 test.beforeAll(async () => {
     const apiContext = await request.newContext();
     const loginResponse = apiContext.post("https://rahulshettyacademy.com/api/ecom/auth/login",
         {data: loginPayLoad}
     )
     expect((await loginResponse).ok()).toBeTruthy();
+    const loginResponseJson = loginResponse.json();
+    const token = loginResponseJson.token;
+
+
 });
 
 
