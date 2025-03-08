@@ -1,14 +1,18 @@
-const {test, expect} = require("@playwright/test");
+const {test, expect, request} = require("@playwright/test");
+
+
+const loginPayLoad = {userEmail: "selormonray14@gmail.com", userPassword: "playwrightTester14"}
+
 
 test.beforeAll(async () => {
+    const apiContext = await request.newContext();
+    const loginResponse = apiContext.post("https://rahulshettyacademy.com/api/ecom/auth/login",
+        {data: loginPayLoad}
+    )
+});
 
 
-})
-
-
-
-
-test("Client App Login", async ({page}) => {
+test("Client App Login 2", async ({page}) => {
     const emailSelector = page.locator("#userEmail");
     const passwordSelector = page.locator("#userPassword");
     const loginButton = page.locator("#login");
@@ -44,8 +48,8 @@ test("Client App Login", async ({page}) => {
     await products.last().waitFor();
     const productsCount = await products.count();
     // loop through the products on the page and click on the product you desire
-    for ( let i = 0; i < productsCount; i++ ) {
-        if (await products.nth(i).locator("b").textContent() === productName ) {
+    for (let i = 0; i < productsCount; i++) {
+        if (await products.nth(i).locator("b").textContent() === productName) {
             await products.nth(i).locator("text= Add To Cart").click();
             break;
         }
