@@ -2,7 +2,7 @@ const {test, expect, request} = require("@playwright/test");
 
 
 const loginPayLoad = {userEmail: "selormonray14@gmail.com", userPassword: "playwrightTester14"}
-
+let token;
 
 /*
 *  Sets up an API context
@@ -13,22 +13,18 @@ const loginPayLoad = {userEmail: "selormonray14@gmail.com", userPassword: "playw
 
 test.beforeAll(async () => {
     const apiContext = await request.newContext();
-    const loginResponse = apiContext.post("https://rahulshettyacademy.com/api/ecom/auth/login",
-        {data: loginPayLoad}
-    )
-    expect((await loginResponse).ok()).toBeTruthy();
-    const loginResponseJson = loginResponse.json();
-    const token = loginResponseJson.token;
+    const loginResponse = await apiContext.post("https://rahulshettyacademy.com/api/ecom/auth/login",
+        { data: loginPayLoad }
+    );
 
+    expect(loginResponse.ok()).toBeTruthy();
 
+    const loginResponseJson = await loginResponse.json();
+    token = loginResponseJson.token;
 });
 
 
-test("Client App Login 2", async ({page}) => {
-    const emailSelector = page.locator("#userEmail");
-    const passwordSelector = page.locator("#userPassword");
-    const loginButton = page.locator("#login");
-    const forgotPasswordLink = page.locator(".forgot-password-link");
+test("Place Order", async ({page}) => {
     const automationTestPracticeTextSelector = page.locator("div[class='left mt-1'] p");
     const redBlinkTextSelector = page.locator(".m-2.blink_me");
     const products = page.locator(".card-body");
@@ -46,14 +42,15 @@ test("Client App Login 2", async ({page}) => {
     const ordersSelector = page.locator(".btn.btn-custom[routerlink='/dashboard/myorders']");
     const orderListSelector = page.locator("tbody .ng-star-inserted");
     const orderIdSelector = page.locator("label[class='ng-star-inserted']");
-    const viewButtonSelectors = page.locator("tbody .btn.btn-primary");
-    const orderSummaryOrderIdSelector = page.locator(".col-text.-main");
 
+
+    // insert token in local storage before the page loads thereby bypassing the login step
+    await page.addInitScript(value => {
+        window.localStorage.setItem("token", value);
+    }, token);
 
     await page.goto("https://rahulshettyacademy.com/client");
-    await emailSelector.fill("selormonray14@gmail.com");
-    await passwordSelector.fill("playwrightTester14");
-    await loginButton.click();
+
     await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
     await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
 
