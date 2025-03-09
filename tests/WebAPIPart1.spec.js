@@ -2,7 +2,7 @@ const {test, expect, request} = require("@playwright/test");
 
 
 const loginPayLoad = {userEmail: "selormonray14@gmail.com", userPassword: "playwrightTester14"};
-const orderPayLoad = {orders:[{country:"Ghana", productOrderedId:"67a8dde5c0d3e6622a297cc8"}]};
+const orderPayLoad = {orders: [{country: "Ghana", productOrderedId: "67a8dde5c0d3e6622a297cc8"}]};
 let token;
 let orderID;
 
@@ -17,7 +17,7 @@ test.beforeAll(async () => {
     //login API
     const apiContext = await request.newContext();
     const loginResponse = await apiContext.post("https://rahulshettyacademy.com/api/ecom/auth/login",
-        { data: loginPayLoad }
+        {data: loginPayLoad}
     );
 
     expect(loginResponse.ok()).toBeTruthy();
@@ -35,7 +35,7 @@ test.beforeAll(async () => {
             },
         })
     //get the entire order json and save it in the orderResponseJson
-    const orderResponseJson =  orderResponse.json();
+    const orderResponseJson = orderResponse.json();
     // get the orderID from the orderResponseJson
     orderID = orderResponseJson.orders[0];
 
@@ -55,11 +55,6 @@ test("Place Order", async ({page}) => {
 
     await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
     await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
-
-
-    console.log(orderId);
-    const rows = await page.locator("tbody tr");
-
 
     for (let i = 0; i < await rows.count(); ++i) {
         const rowOrderId = await rows.nth(i).locator("th").textContent();
