@@ -45,33 +45,16 @@ test.beforeAll(async () => {
 test("Place Order", async ({page}) => {
     const automationTestPracticeTextSelector = page.locator("div[class='left mt-1'] p");
     const redBlinkTextSelector = page.locator(".m-2.blink_me");
-    const products = page.locator(".card-body");
-    const productName = "IPHONE 13 PRO";
-    const successSelector = page.locator("div[aria-label='Product Added To Cart']");
-    const cartSelector = page.locator("[routerlink='/dashboard/cart']");
-    const cartItemSelector = page.locator("div li");
-    const checkoutButton = page.locator("li[class='totalRow'] button[type='button']");
-    const countrySelector = page.locator("input[placeholder='Select Country']");
-    const cvvCodeSelector = page.locator("input[type='text']").nth(1);
-    const nameOnCardSelector = page.locator("input[type='text']").nth(2);
-    const placeOrderButton = page.locator(".btnn.action__submit");
-    const thankYouOrderSelector = page.locator(".hero-primary");
-    const thankYouText = " Thankyou for the order. ";
-    const ordersSelector = page.locator(".btn.btn-custom[routerlink='/dashboard/myorders']");
-    const orderListSelector = page.locator("tbody .ng-star-inserted");
-    const orderIdSelector = page.locator("label[class='ng-star-inserted']");
 
 
     // insert token in local storage before the page loads thereby bypassing the login step
     await page.addInitScript(value => {
         window.localStorage.setItem("token", value);
     }, token);
-
     await page.goto("https://rahulshettyacademy.com/client");
 
     await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
     await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
-
 
 
     console.log(orderId);
