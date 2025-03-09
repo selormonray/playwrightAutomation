@@ -45,6 +45,9 @@ test.beforeAll(async () => {
 test("Place Order", async ({page}) => {
     const automationTestPracticeTextSelector = page.locator("div[class='left mt-1'] p");
     const redBlinkTextSelector = page.locator(".m-2.blink_me");
+    const thankYouText = " Thankyou for the order. ";
+    const ordersSelector = page.locator(".btn.btn-custom[routerlink='/dashboard/myorders']");
+    const orderListSelector = page.locator("tbody .ng-star-inserted");
 
 
     // insert token in local storage before the page loads thereby bypassing the login step
@@ -56,14 +59,18 @@ test("Place Order", async ({page}) => {
     await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
     await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
 
+    await ordersSelector.click();
+    await orderListSelector.first().waitFor();
+    const rows = await page.locator("tbody tr");
+
     for (let i = 0; i < await rows.count(); ++i) {
         const rowOrderId = await rows.nth(i).locator("th").textContent();
-        if (orderId.includes(rowOrderId)) {
+        if (orderID.includes(rowOrderId)) {
             await rows.nth(i).locator("button").first().click();
             break;
         }
     }
     const orderIdDetails = await page.locator(".col-text").textContent();
-    expect(orderId.includes(orderIdDetails)).toBeTruthy();
+    expect(orderID.includes(orderIdDetails)).toBeTruthy();
 
 });
