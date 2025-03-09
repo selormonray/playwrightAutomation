@@ -1,8 +1,10 @@
 const {test, expect, request} = require("@playwright/test");
 
 
-const loginPayLoad = {userEmail: "selormonray14@gmail.com", userPassword: "playwrightTester14"}
+const loginPayLoad = {userEmail: "selormonray14@gmail.com", userPassword: "playwrightTester14"};
+const orderPayLoad = {orders:[{country:"Ghana", productOrderedId:"67a8dde5c0d3e6622a297cc8"}]};
 let token;
+let orderID;
 
 /*
 *  Sets up an API context
@@ -12,6 +14,7 @@ let token;
 * */
 
 test.beforeAll(async () => {
+    //login API
     const apiContext = await request.newContext();
     const loginResponse = await apiContext.post("https://rahulshettyacademy.com/api/ecom/auth/login",
         { data: loginPayLoad }
@@ -21,6 +24,21 @@ test.beforeAll(async () => {
 
     const loginResponseJson = await loginResponse.json();
     token = loginResponseJson.token;
+
+    //creating an order
+    const orderResponse = await apiContext.post("https://rahulshettyacademy.com/api/ecom/order/create-order",
+        {
+            data: orderPayLoad,
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": token
+            },
+        })
+    //get the entire order json and save it in the orderResponseJson
+    const orderResponseJson =  orderResponse.json();
+    // get the orderID from the orderResponseJson
+    orderID = orderResponseJson.orders[0];
+
 });
 
 
@@ -54,55 +72,7 @@ test("Place Order", async ({page}) => {
     await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
     await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
 
-    await products.last().waitFor();
-    const productsCount = await products.count();
-    // loop through the products on the page and click on the product you desire
-    for (let i = 0; i < productsCount; i++) {
-        if (await products.nth(i).locator("b").textContent() === productName) {
-            await products.nth(i).locator("text= Add To Cart").click();
-            break;
-        }
-    }
-    // await successSelector.waitFor();
-    // await expect(successSelector).toBeVisible();
-    await cartSelector.click();
 
-    // we expect item added to cart to be present
-
-    // wait for list of items on cart to load
-    await cartItemSelector.first().waitFor();
-    const bool = await page.locator("h3:has-text('IPHONE 13 PRO')").isVisible();
-    expect(bool).toBe(true);
-    expect(bool).toBeTruthy();
-
-    // go to checkout
-    await checkoutButton.click();
-    await cvvCodeSelector.fill("225");
-    await nameOnCardSelector.fill("Sel Onray");
-
-    // fill country sequentially and handling autosuggestion dropdown
-    await countrySelector.pressSequentially("india");
-    const countryDropdownOptions = page.locator(".ta-results");
-    await countryDropdownOptions.waitFor();
-    const countryOptionsCount = await countryDropdownOptions.locator("button").count();
-
-    for (let i = 0; i < countryOptionsCount; i++) {
-        const text = await countryDropdownOptions.locator("button").nth(i).textContent();
-        if (text?.trim() === "India") {  // Use trim() to avoid space issues
-            await countryDropdownOptions.locator("button").nth(i).click();  // Ensure correct button is clicked
-            break;
-        }
-    }
-
-    await placeOrderButton.click();
-    await thankYouOrderSelector.isVisible();
-    await expect(thankYouOrderSelector).toContainText(thankYouText.trim());
-    // get the text content from the orderID selector
-    const orderId = await orderIdSelector.textContent();
-
-    await ordersSelector.click();
-    await orderListSelector.first().waitFor();
-    // iterate through the order list and find your order and view
 
     console.log(orderId);
     const rows = await page.locator("tbody tr");
