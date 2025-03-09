@@ -35,8 +35,9 @@ test.beforeAll(async () => {
             },
         })
     //get the entire order json and save it in the orderResponseJson
-    const orderResponseJson = orderResponse.json();
+    const orderResponseJson = await orderResponse.json();
     // get the orderID from the orderResponseJson
+    console.log(orderResponseJson);
     orderID = orderResponseJson.orders[0];
 
 });
@@ -45,7 +46,6 @@ test.beforeAll(async () => {
 test("Place Order", async ({page}) => {
     const automationTestPracticeTextSelector = page.locator("div[class='left mt-1'] p");
     const redBlinkTextSelector = page.locator(".m-2.blink_me");
-    const thankYouText = " Thankyou for the order. ";
     const ordersSelector = page.locator(".btn.btn-custom[routerlink='/dashboard/myorders']");
     const orderListSelector = page.locator("tbody .ng-star-inserted");
 
