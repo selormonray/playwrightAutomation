@@ -13,3 +13,19 @@ test.beforeAll(async ({ request }) => {
     expect(response).toHaveProperty("orderID");
 });
 
+test("Place Order", async ({ page }) => {
+    await page.addInitScript(value => {
+        window.localStorage.setItem("token", value);
+    }, response.token);
+
+    await page.goto("https://rahulshettyacademy.com/client");
+
+    const automationTestPracticeTextSelector = page.locator("div[class='left mt-1'] p");
+    const redBlinkTextSelector = page.locator(".m-2.blink_me");
+    const ordersSelector = page.locator(".btn.btn-custom[routerlink='/dashboard/myorders']");
+    const orderListSelector = page.locator("tbody .ng-star-inserted");
+
+    await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
+    await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
+
+});
