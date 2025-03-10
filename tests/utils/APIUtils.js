@@ -1,4 +1,3 @@
-
 class APIUtils {
 
     /*
@@ -19,7 +18,7 @@ class APIUtils {
     async getToken() {
         const loginResponse = await this.apiContext.post(
             "https://rahulshettyacademy.com/api/ecom/auth/login",
-            { data: this.loginPayLoad }
+            {data: this.loginPayLoad}
         );
 
         const loginResponseJson = await loginResponse.json();
