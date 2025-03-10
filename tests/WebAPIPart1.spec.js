@@ -43,4 +43,8 @@ test("Place Order", async ({ page }) => {
         }
     }
 
+
+    expect(orderFound).toBeTruthy();
+    const orderIdDetails = await page.locator(".col-text").textContent();
+    expect(response.orderID.includes(orderIdDetails)).toBeTruthy();
 });
