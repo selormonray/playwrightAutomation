@@ -15,17 +15,7 @@ class APIUtils {
     }
 
     // create a method getToken() to get token     //login API
-    async getToken() {
-        const loginResponse = await this.apiContext.post(
-            "https://rahulshettyacademy.com/api/ecom/auth/login",
-            {data: this.loginPayLoad}
-        );
 
-        const loginResponseJson = await loginResponse.json();
-        this.token = loginResponseJson.token;
-
-        return this.token;
-    }
 
 
     //creating an order
