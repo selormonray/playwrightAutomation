@@ -52,6 +52,12 @@ class APIUtils {
         return response;
     }
 
+    async createOrderForZara() {
+        let response = {};
+        response.token = await this.getToken();
+
+    }
+
 
 }
 
