@@ -22,7 +22,6 @@ test("Client App Login", async ({page}) => {
     const orderListSelector = page.locator("tbody .ng-star-inserted");
     const orderIdSelector = page.locator("label[class='ng-star-inserted']");
     const viewButtonSelectors = page.locator("tbody .btn.btn-primary");
-    const orderSummaryOrderIdSelector = page.locator(".col-text.-main");
 
 
     await page.goto("https://rahulshettyacademy.com/client");
