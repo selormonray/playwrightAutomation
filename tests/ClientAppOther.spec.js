@@ -42,9 +42,6 @@ test("Client App Login", async ({page}) => {
     // await successSelector.waitFor();
 
     await cartSelector.click();
-
-    // we expect item added to cart to be present
-
     // wait for list of items on cart to load
     await cartItemSelector.first().waitFor();
     const bool = await page.locator("h3:has-text('IPHONE 13 PRO')").isVisible();
