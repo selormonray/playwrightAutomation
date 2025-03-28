@@ -21,7 +21,6 @@ test("Client App Login", async ({page}) => {
     const ordersSelector = page.locator(".btn.btn-custom[routerlink='/dashboard/myorders']");
     const orderListSelector = page.locator("tbody .ng-star-inserted");
     const orderIdSelector = page.locator("label[class='ng-star-inserted']");
-    const viewButtonSelectors = page.locator("tbody .btn.btn-primary");
 
 
     await page.goto("https://rahulshettyacademy.com/client");
