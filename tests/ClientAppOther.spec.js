@@ -40,7 +40,7 @@ test("Client App Login", async ({page}) => {
        }
     }
     // await successSelector.waitFor();
-    // await expect(successSelector).toBeVisible();
+
     await cartSelector.click();
 
     // we expect item added to cart to be present
