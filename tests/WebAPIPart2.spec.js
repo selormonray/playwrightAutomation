@@ -1,5 +1,15 @@
 const {test, expect} = require("@playwright/test");
 
+// login method to login all before all test runs
+test.beforeAll(async () => {
+    await page.goto("https://rahulshettyacademy.com/client");
+    await emailSelector.fill("selormonray14@gmail.com");
+    await passwordSelector.fill("playwrightTester14");
+    await loginButton.click();
+    await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
+    await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
+
+})
 
 test("Client App Login", async ({page}) => {
     const emailSelector = page.locator("#userEmail");
@@ -25,14 +35,6 @@ test("Client App Login", async ({page}) => {
     const orderIdSelector = page.locator("label[class='ng-star-inserted']");
     const viewButtonSelectors = page.locator("tbody .btn.btn-primary");
     const orderSummaryOrderIdSelector = page.locator(".col-text.-main");
-
-
-    await page.goto("https://rahulshettyacademy.com/client");
-    await emailSelector.fill("selormonray14@gmail.com");
-    await passwordSelector.fill("playwrightTester14");
-    await loginButton.click();
-    await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
-    await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
 
     await products.last().waitFor();
     const productsCount = await products.count();
