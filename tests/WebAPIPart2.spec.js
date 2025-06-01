@@ -3,7 +3,14 @@ const {test, expect} = require("@playwright/test");
 // login method to login all before all test runs
 test.beforeAll(async ({browser}) => {
     const context = await browser.newContext();
-    const page = context.newPage();
+    const page = await context.newPage();
+
+    const emailSelector = page.locator("#userEmail");
+    const passwordSelector = page.locator("#userPassword");
+    const loginButton = page.locator("#login");
+    const forgotPasswordLink = page.locator(".forgot-password-link");
+    const automationTestPracticeTextSelector = page.locator("div[class='left mt-1'] p");
+    const redBlinkTextSelector = page.locator(".m-2.blink_me");
 
     await page.goto("https://rahulshettyacademy.com/client");
     await emailSelector.fill("selormonray14@gmail.com");
@@ -16,15 +23,14 @@ test.beforeAll(async ({browser}) => {
     /*  await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
       await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
   */
+    // invoke a browser, and inject the state into that browser
+
+
+
 })
 
 test("Client App Login", async ({page}) => {
-    const emailSelector = page.locator("#userEmail");
-    const passwordSelector = page.locator("#userPassword");
-    const loginButton = page.locator("#login");
-    const forgotPasswordLink = page.locator(".forgot-password-link");
-    const automationTestPracticeTextSelector = page.locator("div[class='left mt-1'] p");
-    const redBlinkTextSelector = page.locator(".m-2.blink_me");
+
     const products = page.locator(".card-body");
     const productName = "IPHONE 13 PRO";
     const successSelector = page.locator("div[aria-label='Product Added To Cart']");
