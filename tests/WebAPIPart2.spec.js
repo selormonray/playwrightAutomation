@@ -1,7 +1,8 @@
 const {test, expect} = require("@playwright/test");
 
 // login method to login all before all test runs
-test.beforeAll(async () => {
+test.beforeAll(async (browser) => {
+    await browser.newContext();
     await page.goto("https://rahulshettyacademy.com/client");
     await emailSelector.fill("selormonray14@gmail.com");
     await passwordSelector.fill("playwrightTester14");
