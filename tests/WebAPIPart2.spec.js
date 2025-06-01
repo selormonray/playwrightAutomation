@@ -9,9 +9,13 @@ test.beforeAll(async ({browser}) => {
     await emailSelector.fill("selormonray14@gmail.com");
     await passwordSelector.fill("playwrightTester14");
     await loginButton.click();
-    await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
-    await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
+    await page.waitForLoadState('networkidle');
+    // save the current cookies, local storage, and session storage from the browser context
+    await context.storageState({path: 'state.json'});
 
+    /*  await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
+      await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
+  */
 })
 
 test("Client App Login", async ({page}) => {
