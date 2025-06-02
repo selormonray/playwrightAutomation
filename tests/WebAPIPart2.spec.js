@@ -23,9 +23,9 @@ test.beforeAll(async ({browser}) => {
     // save the current cookies, local storage, and session storage from the browser context
     await context.storageState({path: 'state.json'});
 
-    /*  await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
-      await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
-  */
+    await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
+    await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
+
     // invoke a browser, and inject the state into that browser
     webContext = await browser.newContext({storageState: 'state.json'});
 
