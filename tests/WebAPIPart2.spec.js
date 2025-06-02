@@ -121,3 +121,28 @@ test("Client App Login", async () => {
     expect(orderId.includes(orderIdDetails)).toBeTruthy();
 
 });
+
+test("Test Case 2", async () => {
+
+    const page = await webContext.newPage();
+    await page.goto("https://rahulshettyacademy.com/client");
+
+    const products = page.locator(".card-body");
+    const productName = "IPHONE 13 PRO";
+    const successSelector = page.locator("div[aria-label='Product Added To Cart']");
+    const cartSelector = page.locator("[routerlink='/dashboard/cart']");
+    const cartItemSelector = page.locator("div li");
+    const checkoutButton = page.locator("li[class='totalRow'] button[type='button']");
+    const countrySelector = page.locator("input[placeholder='Select Country']");
+    const cvvCodeSelector = page.locator("input[type='text']").nth(1);
+    const nameOnCardSelector = page.locator("input[type='text']").nth(2);
+    const placeOrderButton = page.locator(".btnn.action__submit");
+    const thankYouOrderSelector = page.locator(".hero-primary");
+    const thankYouText = " Thankyou for the order. ";
+    const ordersSelector = page.locator(".btn.btn-custom[routerlink='/dashboard/myorders']");
+    const orderListSelector = page.locator("tbody .ng-star-inserted");
+    const orderIdSelector = page.locator("label[class='ng-star-inserted']");
+    const viewButtonSelectors = page.locator("tbody .btn.btn-primary");
+    const orderSummaryOrderIdSelector = page.locator(".col-text.-main");
+    console.log(products.allTextContents());
+});
