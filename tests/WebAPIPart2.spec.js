@@ -1,5 +1,8 @@
 const {test, expect} = require("@playwright/test");
 
+let webContext;
+
+
 // login method to login all before all test runs
 test.beforeAll(async ({browser}) => {
     const context = await browser.newContext();
@@ -24,12 +27,16 @@ test.beforeAll(async ({browser}) => {
       await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
   */
     // invoke a browser, and inject the state into that browser
+    webContext = await browser.newContext({storageState: 'state.json'});
 
 
 
 })
 
-test("Client App Login", async ({page}) => {
+test("Client App Login", async () => {
+
+    const page = await webContext.newPage();
+    await page.goto("https://rahulshettyacademy.com/client");
 
     const products = page.locator(".card-body");
     const productName = "IPHONE 13 PRO";
