@@ -30,9 +30,9 @@ test("Place Order", async ({page}) => {
     const fakePayloadOrders = {data: [], message: "No Orders"}
 
     // mock the Orders call
-    page.route("https://rahulshettyacademy.com/api/ecom/order/get-orders-for-customer/67b7369fc019fb1ad6036203",
-        route => {
-            const response = page.request.fetch(route.request());
+    await page.route("https://rahulshettyacademy.com/api/ecom/order/get-orders-for-customer/67b7369fc019fb1ad6036203",
+        async route => {
+            const response = await page.request.fetch(route.request());
             let body = fakePayloadOrders;
             route.fulfill({
                 response,
