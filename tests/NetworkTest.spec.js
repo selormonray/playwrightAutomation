@@ -29,6 +29,14 @@ test("Place Order", async ({page}) => {
     await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
 
 
+    // mock the Orders call
+    page.route("https://rahulshettyacademy.com/api/ecom/order/get-orders-for-customer/67b7369fc019fb1ad6036203",
+        route => {
+            const response = page.request.fetch(route.request());
+            // intercepting response - API response -> browser ->render data on front end
+
+        })
+
     await ordersSelector.click();
     await orderListSelector.first().waitFor();
     const rows = await page.locator("tbody tr");
