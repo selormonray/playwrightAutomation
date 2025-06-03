@@ -34,6 +34,10 @@ test("Place Order", async ({page}) => {
         route => {
             const response = page.request.fetch(route.request());
             let body = fakePayloadOrders;
+            route.fulfill({
+                response,
+                body,
+            })
             // intercepting response - API response -> browser ->render data on front end
 
         })
