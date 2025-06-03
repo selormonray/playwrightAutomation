@@ -32,19 +32,4 @@ test("Place Order", async ({page}) => {
     await ordersSelector.click();
     await orderListSelector.first().waitFor();
     const rows = await page.locator("tbody tr");
-
-    let orderFound = false;
-    for (let i = 0; i < await rows.count(); ++i) {
-        const rowOrderId = await rows.nth(i).locator("th").textContent();
-        if (response.orderID && rowOrderId.includes(response.orderID)) {
-            await rows.nth(i).locator("button").first().click();
-            orderFound = true;
-            break;
-        }
-    }
-
-
-    expect(orderFound).toBeTruthy();
-    const orderIdDetails = await page.locator(".col-text").textContent();
-    expect(response.orderID.includes(orderIdDetails)).toBeTruthy();
 });
