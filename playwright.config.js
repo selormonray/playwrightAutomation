@@ -33,7 +33,7 @@ export default defineConfig({
     headless: false,
     // screenshot: "on",
     trace: 'retain-on-failure',
-    trace: 'on',
+    // trace: 'on',
   },
 
   // dirves
