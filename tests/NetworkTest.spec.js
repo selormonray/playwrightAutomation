@@ -40,7 +40,7 @@ test("Place Order", async ({page}) => {
 
     /* mock the Orders call: intercepting the HTTP request made to the below specified URL,
      so instead of letting the browser contact the server, this will execute the below url */
-    await page.route("https://rahulshettyacademy.com/api/ecom/order/get-orders-for-customer/67b7369fc019fb1ad6036203",
+    await page.route("https://rahulshettyacademy.com/api/ecom/order/get-orders-for-customer/*",
         // fetch the real response from the server
         async route => {
             const response = await page.request.fetch(route.request());
@@ -53,6 +53,7 @@ test("Place Order", async ({page}) => {
         })
 
     await ordersSelector.click();
+    await page.waitForResponse("https://rahulshettyacademy.com/api/ecom/order/get-orders-for-customer/*");
     console.log(await page.locator(".mt-4").textContent());
     await page.pause();
     await orderListSelector.first().waitFor();
