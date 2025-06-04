@@ -28,6 +28,13 @@ test("Place Order", async ({page}) => {
     await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
     await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
 
+
+    /*
+    •	we want to verify the UI shows "No Orders" gracefully.
+	•	But your test account already has orders.
+	•	Instead of changing backend data, you intercept the API and return {data: [], message: "No Orders"} to simulate that state.
+        */
+
     // This defines a fake response payload. It mimics what the backend might send when there are no orders
     const fakePayloadOrders = {data: [], message: "No Orders"}
 
@@ -37,17 +44,17 @@ test("Place Order", async ({page}) => {
         // fetch the real response from the server
         async route => {
             const response = await page.request.fetch(route.request());
-            let body = fakePayloadOrders;
+            let body = JSON.stringify(fakePayloadOrders);
             route.fulfill({
                 response,
                 body,
             })
             // intercepting response - API response -> browser ->render data on front end
-
         })
-    await page.pause();
 
     await ordersSelector.click();
+    console.log(await page.locator(".mt-4").textContent());
+    await page.pause();
     await orderListSelector.first().waitFor();
     const rows = await page.locator("tbody tr");
 });
