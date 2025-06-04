@@ -55,7 +55,4 @@ test("Place Order", async ({page}) => {
     await ordersSelector.click();
     await page.waitForResponse("https://rahulshettyacademy.com/api/ecom/order/get-orders-for-customer/*");
     console.log(await page.locator(".mt-4").textContent());
-    await page.pause();
-    await orderListSelector.first().waitFor();
-    const rows = await page.locator("tbody tr");
 });
