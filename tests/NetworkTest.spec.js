@@ -27,10 +27,14 @@ test("Place Order", async ({page}) => {
 
     await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
     await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
+
+    // This defines a fake response payload. It mimics what the backend might send when there are no orders
     const fakePayloadOrders = {data: [], message: "No Orders"}
 
-    // mock the Orders call
+    /* mock the Orders call: intercepting the HTTP request made to the below specified URL,
+     so instead of letting the browser contact the server, this will execute the below url */
     await page.route("https://rahulshettyacademy.com/api/ecom/order/get-orders-for-customer/67b7369fc019fb1ad6036203",
+        // fetch the real response from the server
         async route => {
             const response = await page.request.fetch(route.request());
             let body = fakePayloadOrders;
@@ -41,6 +45,7 @@ test("Place Order", async ({page}) => {
             // intercepting response - API response -> browser ->render data on front end
 
         })
+    await page.pause();
 
     await ordersSelector.click();
     await orderListSelector.first().waitFor();
