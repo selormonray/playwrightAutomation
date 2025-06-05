@@ -17,5 +17,7 @@ test("Security Testing Test", async ({page}) => {
     await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
     await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
 
+    await page.locator("button[routerlink*='myorders']").click();
+
 
 })
