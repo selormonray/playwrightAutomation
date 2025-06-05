@@ -23,7 +23,8 @@ test("Security Testing Test", async ({page}) => {
     await page.route("https://rahulshettyacademy.com/api/ecom/order/get-orders-details?id=*",
         // forcing the request to use a hard coded ID that does not exist as part of the order
         route => route.continue({url: 'https://rahulshettyacademy.com/api/ecom/order/get-orders-details?id=621661f884gt78f6765465b6'}))
-
+    await page.locator("button:has-text('View')").first().click();
+    await expect(page.locator("p").last()).toHaveText("You are not authorize to view this order");
 
 
 
