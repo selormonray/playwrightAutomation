@@ -21,6 +21,10 @@ test("Security Testing Test", async ({page}) => {
 
     // this sets up network interception: targets the below network request that matches the url pattern
     await page.route("https://rahulshettyacademy.com/api/ecom/order/get-orders-details?id=*",
+        // forcing the request to use a hard coded ID that does not exist as part of the order
+        route => route.continue({url: 'https://rahulshettyacademy.com/api/ecom/order/get-orders-details?id=621661f884gt78f6765465b6'}))
+
+
 
 
 })
