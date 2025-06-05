@@ -19,5 +19,8 @@ test("Security Testing Test", async ({page}) => {
 
     await page.locator("button[routerlink*='myorders']").click();
 
+    // this sets up network interception
+    await page.route("https://rahulshettyacademy.com/api/ecom/order/get-orders-details?id=*",
+
 
 })
