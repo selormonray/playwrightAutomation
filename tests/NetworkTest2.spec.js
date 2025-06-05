@@ -19,13 +19,16 @@ test("Security Testing Test", async ({page}) => {
 
     await page.locator("button[routerlink*='myorders']").click();
 
+    /*
+        we are simulating a security scenario where a user attempts to access an order they are not authorized to view.
+        You’re overriding the API call to target a specific order ID you know will return an unauthorized message.
+    */
+
     // this sets up network interception: targets the below network request that matches the url pattern
     await page.route("https://rahulshettyacademy.com/api/ecom/order/get-orders-details?id=*",
         // forcing the request to use a hard coded ID that does not exist as part of the order
         route => route.continue({url: 'https://rahulshettyacademy.com/api/ecom/order/get-orders-details?id=621661f884gt78f6765465b6'}))
     await page.locator("button:has-text('View')").first().click();
     await expect(page.locator("p").last()).toHaveText("You are not authorize to view this order");
-
-
 
 })
