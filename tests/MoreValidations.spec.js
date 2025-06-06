@@ -1,14 +1,13 @@
 import {expect, test} from "@playwright/test";
 
+const showHideSelector = await page.locator("#displayed-text");
+const hideSelector = await page.locator("#hide-textbox");
+const confirmButton = await page.locator("#confirmbtn");
+const mouseHoverButton = await page.locator("#mousehover");
+const frameLocator = await page.locator("#courses-iframe");
+
 
 test("Pop Up Validations", async ({page}) => {
-
-    const showHideSelector = await page.locator("#displayed-text");
-    const hideSelector = await page.locator("#hide-textbox");
-    const confirmButton = await page.locator("#confirmbtn");
-    const mouseHoverButton = await page.locator("#mousehover");
-    const frameLocator = await page.locator("#courses-iframe");
-
 
     await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
     await expect(showHideSelector).toBeVisible();
@@ -28,5 +27,9 @@ test("Pop Up Validations", async ({page}) => {
 
 test("Screenshot & Visual Comparison", async ({page}) => {
 
+    await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
+    await expect(showHideSelector).toBeVisible();
+    await hideSelector.click();
+    await expect(await page.locator("#displayed-text")).toBeHidden();
 
 });
