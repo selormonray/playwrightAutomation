@@ -25,7 +25,7 @@ test("Pop Up Validations", async ({page}) => {
     console.log(textCheck.split(" ")[1]);
 })
 
-test("Screenshot & Visual Comparison", async ({page}) => {
+test.only("Screenshot & Visual Comparison", async ({page}) => {
     const showHideSelector = await page.locator("#displayed-text");
     const hideSelector = await page.locator("#hide-textbox");
     const confirmButton = await page.locator("#confirmbtn");
@@ -34,6 +34,10 @@ test("Screenshot & Visual Comparison", async ({page}) => {
 
     await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
     await expect(showHideSelector).toBeVisible();
+
+    // taking a partial screenshot of an element
+    await showHideSelector.screenshot({path: "partialScreenshot.png"})
+
     await hideSelector.click();
 
     // takes screenshot of page
