@@ -25,3 +25,8 @@ test("Pop Up Validations", async ({page}) => {
 
     console.log(textCheck.split(" ")[1]);
 })
+
+test("Screenshot & Visual Comparison", async ({page}) => {
+
+
+});
