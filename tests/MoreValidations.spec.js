@@ -46,3 +46,8 @@ test.only("Screenshot & Visual Comparison", async ({page}) => {
     await expect(await page.locator("#displayed-text")).toBeHidden();
 
 });
+
+test.only("Visual Testing", async ({page}) => {
+
+
+})
