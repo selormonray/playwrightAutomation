@@ -15,9 +15,6 @@ test("Pop Up Validations", async ({page}) => {
     await expect(await page.locator("#displayed-text")).toBeHidden();
     page.on('dialog', dialog => dialog.dismiss()); //handling Java/JS pop ups
 
-    // hovering over an element
-    // await mouseHoverButton.hover();
-
     const framesPage = page.locator("#course-frame");
     await framesPage.locator(".new-navbar-highlighter[href='lifetime-access']").click();
     const textCheck = await framesPage.locator(".text h2").textContent();
