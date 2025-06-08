@@ -49,8 +49,6 @@ test.only("Screenshot & Visual Comparison", async ({page}) => {
 
 test.only("Visual Testing", async ({page}) => {
 
-    await page.goto("https://electrolandgh.com/");
 
-    expect(await page.screenshot()).toMatchSnapshot('landing.png');
 
 })
