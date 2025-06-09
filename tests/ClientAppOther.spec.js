@@ -80,5 +80,7 @@ test("Client App Login", async ({page}) => {
     console.log(orderId);
     const rows = await page.locator("tbody tr");
 
+    for (let i = 0; i < await rows.count(); ++i) {
 
-});
+
+})
