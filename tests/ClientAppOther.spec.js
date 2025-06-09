@@ -81,6 +81,8 @@ test("Client App Login", async ({page}) => {
     const rows = await page.locator("tbody tr");
 
     for (let i = 0; i < await rows.count(); ++i) {
+        const rowOrderId = await rows.nth(i).locator("th").textContent();
+        if (orderId.includes(rowOrderId)) {
 
 
 })
