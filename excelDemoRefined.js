@@ -17,8 +17,12 @@ async function excelTest() {
 
     }
 
+    worksheet.eachRow((row) => {
+        row.eachCell((cell) => {
+            console.log(cell.value);
+        });
+    });
 
 
 }
 
-excelTest();
