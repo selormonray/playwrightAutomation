@@ -11,6 +11,12 @@ async function excelTest() {
     });
 
 
+    const worksheet = workbook.getWorksheet('Sheet1'); // Use actual name from output above
+    if (!worksheet) {
+        console.error('Worksheet not found!');
+
+    }
+
 
 
 }
