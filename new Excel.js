@@ -9,6 +9,9 @@ async function excelTest() {
     const worksheet = workbook.getWorksheet('Sheet1');
     worksheet.eachRow((row, rowNumber) => {
 
+            row.eachCell((cell, colNumber) => {
+                console.log(cell.value);
+            })
 
 }
 
