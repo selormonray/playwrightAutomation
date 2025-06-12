@@ -13,9 +13,8 @@ async function excelTest() {
                 console.log(cell.value);
             })
 
-}
-
-)
+        }
+    )
 
 }
 
