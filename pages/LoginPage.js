@@ -13,6 +13,10 @@ class LoginPage {
 
     async validLogin(email, password) {
 
+        await this.emailSelector.fill(email);
+        await this.passwordSelector.fill(password);
+        await this.loginButton.click();
+
 
     }
 
