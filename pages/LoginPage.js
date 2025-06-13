@@ -5,6 +5,7 @@ class LoginPage {
         this.loginButton = page.locator("#login");
         this.emailSelector = page.locator("#userEmail");
         this.passwordSelector = page.locator("#userPassword");
+        this.forgotPasswordLink = page.locator(".forgot-password-link");
     }
 
     async goTo() {
