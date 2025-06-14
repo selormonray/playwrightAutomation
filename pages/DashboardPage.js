@@ -5,11 +5,11 @@ class DashboardPage {
         this.successSelector = page.locator("div[aria-label='Product Added To Cart']");
         this.cartSelector = page.locator("[routerlink='/dashboard/cart']");
         this.cartItemSelector = page.locator("div li");
-        this.productName = "IPHONE 13 PRO";
+
 
     }
 
-    async searchProducts(productName) {
+    async searchAndAddProductsToCart(productName) {
 
         await this.products.last().waitFor();
         const productsCount = await this.products.count();
@@ -24,6 +24,12 @@ class DashboardPage {
 
     }
 
+    async navigateToCart() {
+        await this.cartSelector.click();
+    }
+
 
 
 }
+
+module.exports = DashboardPage;

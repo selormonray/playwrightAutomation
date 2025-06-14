@@ -1,15 +1,22 @@
 const {test, expect} = require("@playwright/test");
 const {LoginPage} = require("../pages/LoginPage");
+const {DashboardPage} = require("../pages/DashboardPage");
 
 test("Client App Login", async ({page}) => {
     const email = "selormonray14@gmail.com";
+    const productName = "IPHONE 13 PRO";
     const password = "playwrightTester14";
 
     const loginPage = new LoginPage(page);
+    const dashboardPage = new DashboardPage(page);
+
 
 
     await loginPage.goTo();
     await loginPage.validLogin(email, password);
+
+    await dashboardPage.searchAndAddProductsToCart(productName);
+    await dashboardPage.navigateToCart()
 
 
 
