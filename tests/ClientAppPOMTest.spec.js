@@ -3,6 +3,10 @@ const {LoginPage} = require("../pages/LoginPage");
 const {DashboardPage} = require("../pages/DashboardPage");
 
 test("Client App Login", async ({page}) => {
+    const automationTestPracticeTextSelector = page.locator("div[class='left mt-1'] p");
+    const redBlinkTextSelector = page.locator("m-2 blink_me");
+
+
     const email = "selormonray14@gmail.com";
     const productName = "IPHONE 13 PRO";
     const password = "playwrightTester14";
@@ -14,6 +18,9 @@ test("Client App Login", async ({page}) => {
 
     await loginPage.goTo();
     await loginPage.validLogin(email, password);
+
+    await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
+    await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
 
     await dashboardPage.searchAndAddProductsToCart(productName);
     await dashboardPage.navigateToCart()
@@ -36,18 +43,7 @@ test("Client App Login", async ({page}) => {
     const orderSummaryOrderIdSelector = page.locator(".col-text.-main");
 
 
-    await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
-    await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
 
-
-    // await successSelector.waitFor();
-    // await expect(successSelector).toBeVisible();
-    await cartSelector.click();
-
-    // we expect item added to cart to be present
-
-    // wait for list of items on cart to load
-    await cartItemSelector.first().waitFor();
     const bool = await page.locator("h3:has-text('IPHONE 13 PRO')").isVisible();
     expect(bool).toBe(true);
     expect(bool).toBeTruthy();
