@@ -12,13 +12,12 @@ test("Client App Login", async ({page}) => {
     await loginPage.validLogin(email, password);
 
 
-    const successSelector = page.locator("div[aria-label='Product Added To Cart']");
-    const cartSelector = page.locator("[routerlink='/dashboard/cart']");
-    const cartItemSelector = page.locator("div li");
+
     const checkoutButton = page.locator("li[class='totalRow'] button[type='button']");
     const countrySelector = page.locator("input[placeholder='Select Country']");
     const cvvCodeSelector = page.locator("input[type='text']").nth(1);
     const nameOnCardSelector = page.locator("input[type='text']").nth(2);
+    const products = page.locator(".card-body");
 
     const placeOrderButton = page.locator(".btnn.action__submit");
     const thankYouOrderSelector = page.locator(".hero-primary");
@@ -33,15 +32,7 @@ test("Client App Login", async ({page}) => {
     await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
     await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
 
-    await products.last().waitFor();
-    const productsCount = await products.count();
-    // loop through the products on the page and click on the product you desire
-    for (let i = 0; i < productsCount; i++) {
-        if (await products.nth(i).locator("b").textContent() === productName) {
-            await products.nth(i).locator("text= Add To Cart").click();
-            break;
-        }
-    }
+
     // await successSelector.waitFor();
     // await expect(successSelector).toBeVisible();
     await cartSelector.click();
