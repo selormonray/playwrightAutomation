@@ -1,10 +1,9 @@
 const {test, expect} = require("@playwright/test");
 const {LoginPage} = require("../pages/LoginPage");
 const {DashboardPage} = require("../pages/DashboardPage");
+const {CartPage} = require("../pages/CartPage");
 
 test("Client App Login", async ({page}) => {
-    const automationTestPracticeTextSelector = page.locator("div[class='left mt-1'] p");
-    const redBlinkTextSelector = page.locator(".m-2.blink_me");
 
 
     const email = "selormonray14@gmail.com";
@@ -13,17 +12,17 @@ test("Client App Login", async ({page}) => {
 
     const loginPage = new LoginPage(page);
     const dashboardPage = new DashboardPage(page);
-
+    const cartPage = new CartPage(page);
 
 
     await loginPage.goTo();
     await loginPage.validLogin(email, password);
 
-    await expect(automationTestPracticeTextSelector).toContainText("Automation Practice");
-    await expect(redBlinkTextSelector).toHaveText("User can only see maximum 9 products on a page");
-
+    await dashboardPage.dashBoardPageVerifications(page);
     await dashboardPage.searchAndAddProductsToCart(productName);
     await dashboardPage.navigateToCart()
+
+    await cartPage.verifyPresenceOfSelectedIPhone();
 
 
 
@@ -43,11 +42,6 @@ test("Client App Login", async ({page}) => {
     // const viewButtonSelectors = page.locator("tbody .btn.btn-primary");
     // const orderSummaryOrderIdSelector = page.locator(".col-text.-main");
 
-
-
-    const bool = await page.locator("h3:has-text('IPHONE 13 PRO')").isVisible();
-    expect(bool).toBe(true);
-    expect(bool).toBeTruthy();
 
     // go to checkout
     await checkoutButton.click();
