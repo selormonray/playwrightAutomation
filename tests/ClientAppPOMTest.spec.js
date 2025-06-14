@@ -4,7 +4,7 @@ const {DashboardPage} = require("../pages/DashboardPage");
 
 test("Client App Login", async ({page}) => {
     const automationTestPracticeTextSelector = page.locator("div[class='left mt-1'] p");
-    const redBlinkTextSelector = page.locator("m-2 blink_me");
+    const redBlinkTextSelector = page.locator(".m-2.blink_me");
 
 
     const email = "selormonray14@gmail.com";
@@ -39,8 +39,8 @@ test("Client App Login", async ({page}) => {
     const ordersSelector = page.locator(".btn.btn-custom[routerlink='/dashboard/myorders']");
     const orderListSelector = page.locator("tbody .ng-star-inserted");
     const orderIdSelector = page.locator("label[class='ng-star-inserted']");
-    const viewButtonSelectors = page.locator("tbody .btn.btn-primary");
-    const orderSummaryOrderIdSelector = page.locator(".col-text.-main");
+    // const viewButtonSelectors = page.locator("tbody .btn.btn-primary");
+    // const orderSummaryOrderIdSelector = page.locator(".col-text.-main");
 
 
 
