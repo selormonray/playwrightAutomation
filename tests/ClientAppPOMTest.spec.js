@@ -27,12 +27,13 @@ test("Client App Login", async ({page}) => {
 
 
 
-    const checkoutButton = page.locator("li[class='totalRow'] button[type='button']");
+
     const countrySelector = page.locator("input[placeholder='Select Country']");
     const cvvCodeSelector = page.locator("input[type='text']").nth(1);
     const nameOnCardSelector = page.locator("input[type='text']").nth(2);
     const products = page.locator(".card-body");
 
+    this.successSelector = page.locator("div[aria-label='Product Added To Cart']");
     const placeOrderButton = page.locator(".btnn.action__submit");
     const thankYouOrderSelector = page.locator(".hero-primary");
     const thankYouText = " Thankyou for the order. ";

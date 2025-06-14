@@ -2,7 +2,6 @@ class DashboardPage {
 
     constructor(page) {
         this.products = page.locator(".card-body");
-        this.successSelector = page.locator("div[aria-label='Product Added To Cart']");
         this.cartSelector = page.locator("[routerlink='/dashboard/cart']");
         this.cartItemSelector = page.locator("div li");
 
