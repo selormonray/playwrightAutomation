@@ -19,6 +19,25 @@ class CheckoutPage {
     }
 
 
+    async fillForms(cvvCode, nameOnCardText) {
+        await this.cvvCodeSelector.fill(cvvCode);
+        await this.nameOnCardSelector.fill(nameOnCardText);
+
+        // fill country sequentially and handling autosuggestion dropdown
+        await this.countrySelector.pressSequentially("india");
+        await this.countryDropdownOptions.waitFor();
+        const countryOptionsCount = await this.countryDropdownOptions.locator("button").count();
+
+        for (let i = 0; i < countryOptionsCount; i++) {
+            const text = await this.countryDropdownOptions.locator("button").nth(i).textContent();
+            if (text?.trim() === "India") {  // Use trim() to avoid space issues
+                await this.countryDropdownOptions.locator("button").nth(i).click();  // Ensure correct button is clicked
+                break;
+            }
+        }
+    }
+
+
 
 
 }
