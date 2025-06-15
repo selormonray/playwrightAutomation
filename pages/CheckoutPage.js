@@ -42,6 +42,11 @@ class CheckoutPage {
         await this.placeOrderButton.click();
     }
 
+    async verifySuccessfullyPlacedOrder() {
+        await this.thankYouOrderSelector.isVisible();
+        await expect(await this.thankYouOrderSelector).toContainText(this.thankYouText.trim());
+    }
+
 
 
 
