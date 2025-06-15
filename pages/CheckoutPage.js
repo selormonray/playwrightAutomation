@@ -38,6 +38,11 @@ class CheckoutPage {
     }
 
 
+    async placeOrder() {
+        await this.placeOrderButton.click();
+    }
+
+
 
 
 }
