@@ -6,6 +6,7 @@ class CartPage {
 
         this.checkoutButton = page.locator("li[class='totalRow'] button[type='button']");
         this.iPhoneLocator = page.locator("h3:has-text('IPHONE 13 PRO')");
+        this.checkoutButton = page.locator("li[class='totalRow'] button[type='button']");
 
     }
 
@@ -16,6 +17,11 @@ class CartPage {
         expect(bool).toBeTruthy();
 
 
+    }
+
+
+    async navigateToCheckoutPage() {
+        await this.checkoutButton.click()
     }
 
 
