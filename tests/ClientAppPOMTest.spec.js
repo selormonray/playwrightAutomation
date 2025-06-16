@@ -28,6 +28,10 @@ test("Client App Login", async ({page}) => {
     await cartPage.verifyPresenceOfSelectedIPhone();
     await cartPage.navigateToCheckoutPage();
 
+    await checkoutPage.fillForms(cvvCode, nameOnCardText);
+    await checkoutPage.placeOrder();
+    await checkoutPage.verifySuccessfullyPlacedOrder();
+
 
 
 });
