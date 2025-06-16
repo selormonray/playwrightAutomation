@@ -36,6 +36,9 @@ test("Client App Login", async ({page}) => {
 
     await ordersReviewPage.verifyReturnedOrderId(orderId);
 
+    await ordersReviewPage.placeOrder();
 
+    await orderHistoryPage.searchOrderAndSelect(orderId);
+    expect(orderId.includes(await orderHistoryPage.getOrderId())).toBeTruthy();
 
 });
