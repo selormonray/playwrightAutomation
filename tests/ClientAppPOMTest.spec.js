@@ -25,6 +25,9 @@ test("Client App Login", async ({page}) => {
     await dashboardPage.searchAndAddProductsToCart(productName);
     await dashboardPage.navigateToCart()
 
+    await cartPage.verifyPresenceOfSelectedIPhone();
+    await cartPage.navigateToCheckoutPage();
+
 
 
 });
