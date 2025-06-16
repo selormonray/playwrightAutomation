@@ -32,6 +32,10 @@ test("Client App Login", async ({page}) => {
     await checkoutPage.placeOrder();
     await checkoutPage.verifySuccessfullyPlacedOrder();
 
+    const orderId = await ordersReviewPage.getOrderID();
+
+    await ordersReviewPage.verifyReturnedOrderId(orderId);
+
 
 
 });
