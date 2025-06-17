@@ -33,6 +33,9 @@ class DashboardPage {
 
     async dashBoardPageVerifications() {
         await expect(await this.automationTestPracticeTextSelector).toContainText("Automation Practice");
+        await expect(await this.redBlinkTextSelector).toBeVisible();
+        await expect(await this.redBlinkTextSelector).toContainText("User can only see maximum 9 products on a page");
+
     }
 
 
