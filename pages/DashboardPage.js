@@ -31,6 +31,10 @@ class DashboardPage {
     }
 
 
+    async dashBoardPageVerifications() {
+        await expect(await this.automationTestPracticeTextSelector).toContainText("Automation Practice");
+    }
+
 
 
 }
