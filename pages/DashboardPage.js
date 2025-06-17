@@ -25,6 +25,13 @@ class DashboardPage {
     }
 
 
+    async navigateToCart() {
+        await this.cartSelector.click();
+        await this.cartItemSelector.first().waitFor();
+    }
+
+
+
 
 }
 
