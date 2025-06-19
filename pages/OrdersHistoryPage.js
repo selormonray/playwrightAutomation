@@ -19,7 +19,9 @@ class OrdersHistoryPage {
 
     }
 
-
+    async getOrderId() {
+        return await this.orderdIdDetails.textContent();
+    }
 
 
 }
