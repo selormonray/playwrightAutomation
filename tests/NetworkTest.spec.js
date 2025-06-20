@@ -9,6 +9,8 @@ test.beforeAll(async ({request}) => {
     const apiUtils = new APIUtils(request, loginPayLoad);
     response = await apiUtils.createOrder(orderPayLoad);
 
+    expect(response).toHaveProperty("token");
+    expect(response).toHaveProperty("orderID");
 
 });
 
