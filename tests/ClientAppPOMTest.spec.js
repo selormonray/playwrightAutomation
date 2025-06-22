@@ -1,13 +1,10 @@
 const {test, expect} = require("@playwright/test");
 const {POManager} = require("../pages/POManager");
 
-test("Client App Login", async ({page}) => {
+const loginDataSet = JSON.parse(JSON.stringify(require("../DTOs/loginDTO.json")));
+const userDetailsDataSet = JSON.parse(JSON.stringify(require("../DTOs/userDetailsDTO.json")));
 
-    const email = "selormonray14@gmail.com";
-    const productName = "IPHONE 13 PRO";
-    const password = "playwrightTester14";
-    const cvvCode = "255";
-    const nameOnCardText = "Sel Onray";
+test("Client App Login", async ({page}) => {
 
     const poManager = new POManager(page);
     const loginPage = poManager.getLoginPage();
@@ -19,16 +16,17 @@ test("Client App Login", async ({page}) => {
 
 
     await loginPage.goTo();
-    await loginPage.validLogin(email, password);
+    await loginPage.validLogin(loginDataSet.email, loginDataSet.password);
 
     await dashboardPage.dashBoardPageVerifications(page);
-    await dashboardPage.searchAndAddProductsToCart(productName);
-    await dashboardPage.navigateToCart()
+    await dashboardPage.searchAndAddProductsToCart(userDetailsDataSet.productName);
+    await dashboardPage.navigateToCart();
 
     await cartPage.verifyPresenceOfSelectedIPhone();
     await cartPage.navigateToCheckoutPage();
+    console.log(userDetailsDataSet.cvvCode);
 
-    await checkoutPage.fillForms(cvvCode, nameOnCardText);
+    await checkoutPage.fillForms(userDetailsDataSet.cvvCode, userDetailsDataSet.nameOnCardText);
     await checkoutPage.placeOrder();
     await checkoutPage.verifySuccessfullyPlacedOrder();
 
