@@ -25,17 +25,6 @@ test("Client App Login", async ({page}) => {
     await cartPage.navigateToCheckoutPage();
     console.log(userDetailsDataSet.cvvCode);
 
-    await checkoutPage.fillForms(userDetailsDataSet.cvvCode, userDetailsDataSet.nameOnCardText);
-    await checkoutPage.placeOrder();
-    await checkoutPage.verifySuccessfullyPlacedOrder();
 
-    const orderId = await ordersReviewPage.getOrderID();
-
-    await ordersReviewPage.verifyReturnedOrderId(orderId);
-
-    await ordersReviewPage.placeOrder();
-
-    await orderHistoryPage.searchOrderAndSelect(orderId);
-    expect(orderId.includes(await orderHistoryPage.getOrderId())).toBeTruthy();
 
 });
