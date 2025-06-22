@@ -7,6 +7,13 @@ const userDetailsDataSet = JSON.parse(JSON.stringify(require("../DTOs/userDetail
 test("Client App Login", async ({page}) => {
 
 
+    const poManager = new POManager(page);
+    const loginPage = poManager.getLoginPage();
+    const dashboardPage = poManager.getDashboardPage();
+    const cartPage = poManager.getCartPage();
+    const checkoutPage = poManager.getCheckoutPage();
+    const ordersReviewPage = poManager.getOrdersReviewPage();
+    const orderHistoryPage = poManager.getOrdersHistoryPage();
     await loginPage.goTo();
     await loginPage.validLogin(loginDataSet.email, loginDataSet.password);
 
