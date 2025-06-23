@@ -31,12 +31,11 @@ export default defineConfig({
 
     browserName: "chromium",
     headless: false,
-    // screenshot: "on",
+    screenshot: "only-on-failure",
     trace: 'retain-on-failure',
     // trace: 'on',
   },
 
-  // dirves
 
   /* Run your local dev server before starting the tests */
   // webServer: {
