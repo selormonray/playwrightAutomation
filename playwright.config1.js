@@ -38,6 +38,7 @@ export default defineConfig({
                 viewport: {width: 1920, height: 1080},
                 ...devices['iPad Pro 11'],
                 ignoreHTTPSErrors: false,
+                permissions: ['geolocation'],
 
                 // trace: 'on',
             }
