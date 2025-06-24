@@ -39,6 +39,7 @@ export default defineConfig({
                 ...devices['iPad Pro 11'],
                 ignoreHTTPSErrors: false,
                 permissions: ['geolocation'],
+                video: "retain-on-failure"
 
                 // trace: 'on',
             }
