@@ -1,5 +1,5 @@
 // @ts-check
-import {defineConfig} from "@playwright/test";
+import {defineConfig, devices} from "@playwright/test";
 
 /**
  * Read environment variables from file.
@@ -35,6 +35,9 @@ export default defineConfig({
                 headless: false,
                 screenshot: "only-on-failure",
                 trace: 'retain-on-failure',
+                viewport: {width: 1920, height: 1080},
+                ...devices['iPad Pro 11'],
+
                 // trace: 'on',
             }
         },
