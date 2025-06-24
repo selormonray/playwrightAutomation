@@ -37,6 +37,7 @@ export default defineConfig({
                 trace: 'retain-on-failure',
                 viewport: {width: 1920, height: 1080},
                 ...devices['iPad Pro 11'],
+                ignoreHTTPSErrors: false,
 
                 // trace: 'on',
             }
