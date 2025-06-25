@@ -33,6 +33,7 @@ test.beforeAll(async ({browser}) => {
 
 })
 
+test.describe.configure({mode: 'parallel'});
 test("Client App Login", async () => {
 
     const page = await webContext.newPage();
