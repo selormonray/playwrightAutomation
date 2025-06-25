@@ -14,6 +14,7 @@ import {defineConfig} from "@playwright/test";
  */
 export default defineConfig({
   testDir: "./tests",
+  workers: 5,
 
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,

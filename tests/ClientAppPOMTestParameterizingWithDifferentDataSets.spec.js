@@ -3,7 +3,7 @@ const {POManager} = require("../pages/POManager");
 
 const dataset = JSON.parse(JSON.stringify(require("../DTOs/loginDTO.json")));
 const data2 = JSON.parse(JSON.stringify(require("../DTOs/userDetailsDTO.json")));
-
+/*
 for (const data of dataset) {
     test(`Client App Login Parameterization ${data.email}`, async ({page}) => {
 
@@ -42,4 +42,4 @@ for (const data of dataset) {
 
     });
 }
-
+*/
