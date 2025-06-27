@@ -22,7 +22,7 @@ test("Pop Up Validations", async ({page}) => {
     console.log(textCheck.split(" ")[1]);
 })
 
-test.only("Screenshot & Visual Comparison", async ({page}) => {
+test("Screenshot & Visual Comparison", async ({page}) => {
     const showHideSelector = await page.locator("#displayed-text");
     const hideSelector = await page.locator("#hide-textbox");
     const confirmButton = await page.locator("#confirmbtn");
@@ -44,9 +44,9 @@ test.only("Screenshot & Visual Comparison", async ({page}) => {
 
 });
 
-test.only("Visual Testing", async ({page}) => {
+test("Visual Testing", async ({page}) => {
 
-    await page.goto("https://electrolandgh.com/");
+    await page.goto("https://google.com/");
 
 
     expect(await page.screenshot()).toMatchSnapshot('landing.png');

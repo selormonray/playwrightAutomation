@@ -1,7 +1,7 @@
 const {test, expect} = require("@playwright/test");
 
 
-test("Client App Login", async ({page}) => {
+test("@Web Client App Login", async ({page}) => {
     const emailSelector = page.locator("#userEmail");
     const passwordSelector = page.locator("#userPassword");
     const loginButton = page.locator("#login");
