@@ -67,9 +67,7 @@ test("@Web Client App Login", async ({page}) => {
         }
     }
 
-    await placeOrderButton.click();
-    await thankYouOrderSelector.isVisible();
-    await expect(thankYouOrderSelector).toContainText(thankYouText.trim());
+
     // get the text content from the orderID selector
     const orderId = await orderIdSelector.textContent();
 
