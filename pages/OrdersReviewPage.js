@@ -6,7 +6,6 @@ class OrdersReviewPage {
 
     }
 
-
     async getOrderID() {
         const orderId = await this.orderIdSelector.textContent();
         console.log(orderId);

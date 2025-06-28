@@ -33,11 +33,11 @@ test("@Web Client App Login", async ({page}) => {
     await products.last().waitFor();
     const productsCount = await products.count();
     // loop through the products on the page and click on the product you desire
-    for ( let i = 0; i < productsCount; i++ ) {
-       if (await products.nth(i).locator("b").textContent() === productName ) {
-           await products.nth(i).locator("text= Add To Cart").click();
-           break;
-       }
+    for (let i = 0; i < productsCount; i++) {
+        if (await products.nth(i).locator("b").textContent() === productName) {
+            await products.nth(i).locator("text= Add To Cart").click();
+            break;
+        }
     }
     // await successSelector.waitFor();
 
@@ -90,5 +90,4 @@ test("@Web Client App Login", async ({page}) => {
 
     const orderIdDetails = await page.locator(".col-text").textContent();
     expect(orderId.includes(orderIdDetails)).toBeTruthy();
-
-        })
+})
