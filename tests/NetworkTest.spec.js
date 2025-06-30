@@ -14,7 +14,7 @@ test.beforeAll(async ({request}) => {
 
 });
 
-test("Place Order", async ({page}) => {
+test("@Web Place Order", async ({page}) => {
     await page.addInitScript(value => {
         window.localStorage.setItem("token", value);
     }, response.token);
