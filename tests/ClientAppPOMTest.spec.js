@@ -4,7 +4,7 @@ const {POManager} = require("../pages/POManager");
 const loginDataSet = JSON.parse(JSON.stringify(require("../DTOs/loginDTO.json")));
 const userDetailsDataSet = JSON.parse(JSON.stringify(require("../DTOs/userDetailsDTO.json")));
 
-test("Client App Login", async ({page}) => {
+test("@Web Client App Login", async ({page}) => {
 
 
     const poManager = new POManager(page);
