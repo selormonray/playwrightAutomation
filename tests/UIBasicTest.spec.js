@@ -52,7 +52,7 @@ test("Test 2", async ({browser}) => {
     console.log(allTitles);
 });
 
-test("UI Control Test", async ({page}) => {
+test("@Web UI Control Test", async ({page}) => {
     const userName = page.locator("#username");
     const signIn = page.locator("#signInBtn");
     const userRadioBtn = page.locator(".radiotextsty").last();
