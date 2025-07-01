@@ -1,5 +1,5 @@
 // @ts-check
-import {defineConfig, devices} from "@playwright/test";
+import {defineConfig} from "@playwright/test";
 
 /**
  * Read environment variables from file.
@@ -33,11 +33,10 @@ export default defineConfig({
             use: {
                 // use helps you select what browser you want to run, to get screenshots, logs. you enter everything here
                 browserName: "chromium",
-                headless: false,
+                headless: true,
                 screenshot: "only-on-failure",
                 trace: 'retain-on-failure',
                 viewport: {width: 1920, height: 1080},
-                ...devices['iPad Pro 11'],
                 ignoreHTTPSErrors: false,
                 permissions: ['geolocation'],
                 video: "retain-on-failure"
@@ -50,7 +49,7 @@ export default defineConfig({
             use: {
                 // use helps you select what browser you want to run, to get screenshots, logs. you enter everything here
                 browserName: "webkit",
-                headless: false,
+                headless: true,
                 screenshot: "only-on-failure",
                 trace: 'retain-on-failure',
                 // trace: 'on',
