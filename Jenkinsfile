@@ -8,30 +8,12 @@ pipeline {
     }
 
     stages {
-        stage('Setup Environment') {
-            steps {
-                script {
-                    // For macOS agents with Homebrew pre-installed
-                    if (isUnix()) {
-                        sh '''
-                            # Add Homebrew to PATH (adjust path based on your agent)
-                            export PATH="/usr/local/bin:/opt/homebrew/bin:$PATH"
 
-                            # Install Node.js using Homebrew
-                            brew install node@${NODE_VERSION}
 
-                            # Link Node.js (Homebrew specific)
-                            brew link --overwrite node@${NODE_VERSION}
 
-                            # Add to PATH for subsequent steps
-                            export PATH="/usr/local/opt/node@${NODE_VERSION}/bin:$PATH"
-                        '''
-                    } else {
-                        error('This pipeline is designed for macOS/Linux agents with Homebrew')
-                    }
-                }
-            }
-        }
+
+
+
 
         stage('Install Playwright') {
             steps {
