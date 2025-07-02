@@ -36,9 +36,7 @@ pipeline {
 
 
 
-
-
-        stage('Install Playwright') {
+stage('Install Playwright') {
             steps {
                 sh '''
                     echo "Node version: $(node --version)"
@@ -55,6 +53,17 @@ pipeline {
                 '''
             }
         }
+
+
+
+
+
+
+
+
+
+
+
 
         stage('Run Tests') {
             steps {
