@@ -52,6 +52,7 @@ export default defineConfig({
                 headless: true,
                 screenshot: "only-on-failure",
                 trace: 'retain-on-failure',
+                // ...devices['iPad Pro 11'],
                 // trace: 'on',
             }
         }
