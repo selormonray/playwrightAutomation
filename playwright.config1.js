@@ -35,6 +35,7 @@ export default defineConfig({
                 // use helps you select what browser you want to run, to get screenshots, logs. you enter everything here
                 browserName: "chromium",
                 screenshot: "only-on-failure",
+                headless: true,
                 trace: 'retain-on-failure',
                 viewport: {width: 1920, height: 1080},
                 ignoreHTTPSErrors: false,
@@ -54,7 +55,6 @@ export default defineConfig({
                 screenshot: "only-on-failure",
                 trace: 'retain-on-failure',
                 // ...devices['iPad Pro 11'],
-                // trace: 'on',
             }
         }
 
