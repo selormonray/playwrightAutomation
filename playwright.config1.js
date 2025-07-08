@@ -37,9 +37,9 @@ export default defineConfig({
                 headless: true,
                 screenshot: "only-on-failure",
                 trace: 'retain-on-failure',
-                viewport: {width: 1920, height: 1080},
                 ignoreHTTPSErrors: false,
                 permissions: ['geolocation'],
+                video: "retain-on-failure"
 
 
                 // trace: 'on',
