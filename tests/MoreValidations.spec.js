@@ -5,7 +5,6 @@ test("Pop Up Validations", async ({page}) => {
 
     const showHideSelector = await page.locator("#displayed-text");
     const hideSelector = await page.locator("#hide-textbox");
-    const confirmButton = await page.locator("#confirmbtn");
     const mouseHoverButton = await page.locator("#mousehover");
 
 
