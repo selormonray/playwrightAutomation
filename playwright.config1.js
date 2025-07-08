@@ -34,9 +34,9 @@ export default defineConfig({
             use: {
                 // use helps you select what browser you want to run, to get screenshots, logs. you enter everything here
                 browserName: "chromium",
-                headless: true,
                 screenshot: "only-on-failure",
                 trace: 'retain-on-failure',
+                viewport: {width: 1920, height: 1080},
                 ignoreHTTPSErrors: false,
                 permissions: ['geolocation'],
                 video: "retain-on-failure"
