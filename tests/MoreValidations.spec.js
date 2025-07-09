@@ -25,7 +25,6 @@ test("Screenshot & Visual Comparison", async ({page}) => {
     const showHideSelector = await page.locator("#displayed-text");
     const hideSelector = await page.locator("#hide-textbox");
     const confirmButton = await page.locator("#confirmbtn");
-    const mouseHoverButton = await page.locator("#mousehover");
 
     await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
     await expect(showHideSelector).toBeVisible();
