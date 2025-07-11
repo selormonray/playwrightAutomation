@@ -3,3 +3,5 @@ message1 = "hellooo";
 
 let age1: number = 25;
 let isActive1: boolean = false;
+
+let numberArray1: number[] = [1, 2, 3, 4, 5];
