@@ -54,7 +54,6 @@ test("Test 2", async ({browser}) => {
 
 test("@Web UI Control Test", async ({page}) => {
     const userName = page.locator("#username");
-    const signIn = page.locator("#signInBtn");
     const userRadioBtn = page.locator(".radiotextsty").last();
     const loginDropdown = page.locator("select.form-control");
     const agreeCheckBoxBtn = page.locator("#terms");
