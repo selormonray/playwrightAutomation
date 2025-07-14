@@ -6,6 +6,8 @@ test.skip("Calendar validations", async ({page}) => {
     const date = "15";
     const year = "2027";
     const calendarSelector = page.locator(".react-date-picker__inputGroup");
+
+    await page.getByText(year).click();
     const expectedList = [monthNumber, date, year];
     await page.locator(".react-calendar__tile").nth(Number(monthNumber) - 1).click();
     await page.locator("//abbr[text()='" + date + "']").click();
