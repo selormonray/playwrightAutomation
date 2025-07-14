@@ -6,7 +6,6 @@ test.skip("Calendar validations", async ({page}) => {
     const date = "15";
     const year = "2027";
     const calendarSelector = page.locator(".react-date-picker__inputGroup");
-
     await page.getByText(year).click();
     const expectedList = [monthNumber, date, year];
     await page.locator(".react-calendar__tile").nth(Number(monthNumber) - 1).click();
@@ -16,7 +15,6 @@ test.skip("Calendar validations", async ({page}) => {
     await page.locator(".react-calendar__navigation__label").click();
     await page.locator(".react-calendar__navigation__label").click();
 
-    const inputs = await page.locator(".react-date-picker__inputGroup__input");
 
     /*
     Selects all input fields in the date picker.
