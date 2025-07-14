@@ -14,6 +14,7 @@ test.skip("Calendar validations", async ({page}) => {
     await calendarSelector.click();
     await page.locator(".react-calendar__navigation__label").click();
     await page.locator(".react-calendar__navigation__label").click();
+    const inputs = await page.locator(".react-date-picker__inputGroup__input");
 
 
     /*
