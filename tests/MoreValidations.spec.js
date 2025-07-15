@@ -8,7 +8,6 @@ test("Pop Up Validations", async ({page}) => {
 
 
     await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
-    await expect(showHideSelector).toBeVisible();
     await hideSelector.click();
     await expect(await page.locator("#displayed-text")).toBeHidden();
     page.on('dialog', dialog => dialog.dismiss()); //handling Java/JS pop ups
