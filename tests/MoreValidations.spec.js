@@ -31,6 +31,7 @@ test("Screenshot & Visual Comparison", async ({page}) => {
     await showHideSelector.screenshot({path: "partialScreenshot.png"})
 
 
+    await hideSelector.click();
     // takes screenshot of page
     await page.screenshot({path: "./screenshot.png"});
 
