@@ -12,3 +12,4 @@ data1 = 42;
 let numberArray1: number[] = [1, 2, 3, 4, 5];
 
 let data: any = "This is a string";
+data = 42;
