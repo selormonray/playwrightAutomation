@@ -13,3 +13,7 @@ let numberArray1: number[] = [1, 2, 3, 4, 5];
 
 let data: any = "This is a string";
 data = 42;
+
+function add(a: number, b: number): number {
+    return a + b;
+}
