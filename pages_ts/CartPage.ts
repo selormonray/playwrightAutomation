@@ -1,7 +1,6 @@
 import {Locator, Page} from '@playwright/test';
 
 export class CartPage {
-
     cartProducts: Locator;
     productsText: Locator;
     cart: Locator;
@@ -18,6 +17,5 @@ export class CartPage {
         this.checkout = page.locator("text=Checkout");
 
     }
-
 
 }
