@@ -9,7 +9,6 @@ export class CartPage {
     checkout: Locator;
     page: Page;
 
-
     constructor(page: Page) {
         this.page = page;
         this.cartProducts = page.locator("div li").first();
@@ -19,4 +18,6 @@ export class CartPage {
         this.checkout = page.locator("text=Checkout");
 
     }
+
+
 }
