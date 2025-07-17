@@ -30,4 +30,8 @@ export class CartPage {
         await this.checkout.click();
     }
 
+    getProductLocator(productName: string) {
+        return this.page.locator("h3:has-text('" + productName + "')");
+    }
+
 }
