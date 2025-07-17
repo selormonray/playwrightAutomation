@@ -18,4 +18,12 @@ export class CartPage {
 
     }
 
+    async VerifyProductIsDisplayed(productName: string) {
+
+        await this.cartProducts.waitFor();
+        const bool = await this.getProductLocator(productName).isVisible();
+        expect(bool).toBeTruthy();
+
+    }
+
 }
