@@ -26,4 +26,8 @@ export class CartPage {
 
     }
 
+    async Checkout() {
+        await this.checkout.click();
+    }
+
 }
