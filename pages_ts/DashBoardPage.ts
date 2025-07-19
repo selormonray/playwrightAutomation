@@ -16,6 +16,15 @@ export class DashboardPage {
 
     }
 
+    async searchProductAddCart(productName: string) {
+
+        const titles = await this.productsText.allTextContents();
+        console.log(titles);
+        const count = await this.products.count();
+        for (let i = 0; i < count; ++i) {
+
+
+
 
 }
 
