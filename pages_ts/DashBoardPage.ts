@@ -23,7 +23,13 @@ export class DashboardPage {
         const count = await this.products.count();
         for (let i = 0; i < count; ++i) {
 
-
+            if (await this.products.nth(i).locator("b").textContent() === productName) {
+                //add to cart
+                await this.products.nth(i).locator("text= Add To Cart").click();
+                break;
+            }
+        }
+    }
 
 
 }
