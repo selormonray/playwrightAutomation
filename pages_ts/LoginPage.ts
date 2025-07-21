@@ -1,4 +1,6 @@
 export class LoginPage {
+    signInbutton: Locator;
+
 
 }
 
