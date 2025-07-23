@@ -7,3 +7,9 @@ const userDetailsDataSet = JSON.parse(JSON.stringify(require("DTOs/userDetailsDT
 let browser, context, page, poManager;
 let orderId;
 
+Before(async function () {
+    browser = await chromium.launch();
+    context = await browser.newContext();
+    page = await context.newPage();
+    poManager = new POManager(page);
+});
