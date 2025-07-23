@@ -24,3 +24,12 @@ Given('a login to the ecommerce application', async function () {
     await loginPage.validLogin(loginDataSet.email, loginDataSet.password);
 });
 
+
+When('I add product to cart', async function () {
+    const dashboardPage = poManager.getDashboardPage();
+    await dashboardPage.dashBoardPageVerifications(page);
+    await dashboardPage.searchAndAddProductsToCart(userDetailsDataSet.productName);
+    await dashboardPage.navigateToCart();
+});
+
+
