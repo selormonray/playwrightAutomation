@@ -18,4 +18,9 @@ After(async function () {
     await context.close();
     await browser.close();
 });
+Given('a login to the ecommerce application', async function () {
+    const loginPage = poManager.getLoginPage();
+    await loginPage.goTo();
+    await loginPage.validLogin(loginDataSet.email, loginDataSet.password);
+});
 
