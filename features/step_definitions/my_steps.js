@@ -1,8 +1,8 @@
 const {Given, When, Then, Before, After} = require("@cucumber/cucumber");
-const {POManager} = require("pages/POManager");
+const {POManager} = require("../../pages/POManager");
 const {chromium} = require("@playwright/test");
-const loginDataSet = JSON.parse(JSON.stringify(require("DTOs/loginDTO.json")));
-const userDetailsDataSet = JSON.parse(JSON.stringify(require("DTOs/userDetailsDTO.json")));
+const loginDataSet = JSON.parse(JSON.stringify(require("../../DTOs/loginDTO.json")));
+const userDetailsDataSet = JSON.parse(JSON.stringify(require("../../DTOs/userDetailsDTO.json")));
 
 let browser, context, page, poManager;
 let orderId;
@@ -18,18 +18,16 @@ After(async function () {
     await context.close();
     await browser.close();
 });
-Given('a login to the ecommerce application', async function () {
+Given('a login to the ecommerce application using {string} and {string}', async function (email, password) {
     const loginPage = poManager.getLoginPage();
     await loginPage.goTo();
-    await loginPage.validLogin(loginDataSet.email, loginDataSet.password);
+    await loginPage.validLogin(email, password);
 });
 
-
-When('I add product to cart', async function () {
+When('I add {string} to the cart', async function (productName) {
     const dashboardPage = poManager.getDashboardPage();
     await dashboardPage.dashBoardPageVerifications(page);
-    await dashboardPage.searchAndAddProductsToCart(userDetailsDataSet.productName);
+    await dashboardPage.searchAndAddProductsToCart(productName);
     await dashboardPage.navigateToCart();
 });
-
 
