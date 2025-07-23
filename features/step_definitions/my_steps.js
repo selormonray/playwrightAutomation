@@ -13,3 +13,9 @@ Before(async function () {
     page = await context.newPage();
     poManager = new POManager(page);
 });
+
+After(async function () {
+    await context.close();
+    await browser.close();
+});
+
