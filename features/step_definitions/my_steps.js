@@ -49,4 +49,5 @@ When('I enter valid details and place order', async function () {
 });
 
 Then('Verify order is present in the order history page', async function () {
+    const orderHistoryPage = poManager.getOrdersHistoryPage();
 
