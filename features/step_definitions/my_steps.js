@@ -36,3 +36,8 @@ Then('Verify {string} is added to the cart', async function (productName) {
     await cartPage.navigateToCheckoutPage();
 });
 
+When('I enter valid details and place order', async function () {
+    const checkoutPage = poManager.getCheckoutPage();
+    await checkoutPage.fillForms(userDetailsDataSet.cvvCode, userDetailsDataSet.nameOnCardText);
+    await checkoutPage.placeOrder();
+    await checkoutPage.verifySuccessfullyPlacedOrder();
