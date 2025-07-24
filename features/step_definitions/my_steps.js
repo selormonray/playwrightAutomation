@@ -50,4 +50,9 @@ When('I enter valid details and place order', async function () {
 
 Then('Verify order is present in the order history page', async function () {
     const orderHistoryPage = poManager.getOrdersHistoryPage();
-
+    await orderHistoryPage.searchOrderAndSelect(orderId);
+    const historyOrderId = await orderHistoryPage.getOrderId();
+    if (!orderId.includes(historyOrderId)) {
+        throw new Error('Order not found in history');
+    }
+});
