@@ -30,4 +30,5 @@ When('I add {string} to the cart', async function (productName) {
     await dashboardPage.searchAndAddProductsToCart(productName);
     await dashboardPage.navigateToCart();
 });
+Then('Verify {string} is added to the cart', async function (productName) {
 
