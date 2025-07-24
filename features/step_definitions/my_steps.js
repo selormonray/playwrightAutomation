@@ -48,3 +48,5 @@ When('I enter valid details and place order', async function () {
     await ordersReviewPage.placeOrder();
 });
 
+Then('Verify order is present in the order history page', async function () {
+
