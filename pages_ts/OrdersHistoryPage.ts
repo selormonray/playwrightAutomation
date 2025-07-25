@@ -1,15 +1,10 @@
-pageimport
-{
-    test, expect, Locator, Page
-}
-from
-'@playwright/test';
-export class OrdersHistoryPage
-{
-    orderdIdDetails: Locator;
-    rows: Locator;
-    ordersTable: Locator;
-    page: Page;
+import {Locator, Page} from '@playwright/test';
+
+export class OrdersHistoryPage {
+    private orderdIdDetails: Locator;
+    private rows: Locator;
+    private ordersTable: Locator;
+    private page: Page;
 
     constructor(page: Page) {
         this.page = page;
@@ -18,22 +13,18 @@ export class OrdersHistoryPage
         this.orderdIdDetails = page.locator(".col-text");
     }
 
-    async searchOrderAndSelect(orderId: any) {
-
+    async searchOrderAndSelect(orderId: string): Promise<void> {
         await this.ordersTable.waitFor();
         for (let i = 0; i < await this.rows.count(); ++i) {
             const rowOrderId = await this.rows.nth(i).locator("th").textContent();
-            if (orderId.includes(rowOrderId)) {
+            if (rowOrderId && orderId.includes(rowOrderId)) {
                 await this.rows.nth(i).locator("button").first().click();
                 break;
             }
         }
-
     }
 
-    async getOrderId() {
+    async getOrderId(): Promise<string | null> {
         return await this.orderdIdDetails.textContent();
     }
-
 }
-module.exports = {OrdersHistoryPage};
