@@ -24,5 +24,8 @@ export class OrdersHistoryPage {
         }
     }
 
+    async getOrderId(): Promise<string | null> {
+        return await this.orderdIdDetails.textContent();
+    }
 
 }
