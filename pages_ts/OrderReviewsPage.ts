@@ -4,6 +4,10 @@ export class OrdersReviewPage {
 
 
     country: Locator;
+    dropdown: Locator;
+
+    emailId: Locator;
+
 
 
 }
