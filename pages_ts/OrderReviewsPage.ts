@@ -22,7 +22,21 @@ export class OrdersReviewPage {
 
     }
 
-    async searchCountryAndSelect(countryCode: string, countryName: string)
+    async searchCountryAndSelect(countryCode: string, countryName: string) {
+        await this.country.pressSequentially("ind");
+        // await this.country.fill(countryCode,{delay:100});
+        await this.dropdown.waitFor();
+        const optionsCount = await this.dropdown.locator("button").count();
+        for (let i = 0; i < optionsCount; ++i) {
+            let text: any;
+            text = await this.dropdown.locator("button").nth(i).textContent();
+            if (text.trim() === countryName) {
+                await this.dropdown.locator("button").nth(i).click();
+                break;
+            }
+        }
+
+    }
 
 
 
