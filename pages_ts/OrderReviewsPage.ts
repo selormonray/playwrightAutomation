@@ -7,6 +7,10 @@ export class OrdersReviewPage {
     dropdown: Locator;
     emailId: Locator;
     page: Page;
+    submit: Locator;
+    orderConfirmationText: Locator;
+    orderId: Locator;
+
 
 
 
