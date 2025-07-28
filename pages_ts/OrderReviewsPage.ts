@@ -35,9 +35,12 @@ export class OrdersReviewPage {
                 break;
             }
 
-
         }
 
+    }
+
+    async VerifyEmailId(username: string) {
+        await expect(this.emailId).toHaveText(username);
     }
 
 
