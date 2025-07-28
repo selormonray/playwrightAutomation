@@ -22,6 +22,7 @@ export class OrdersReviewPage {
 
     }
 
+    async searchCountryAndSelect(countryCode: string, countryName: string)
 
 
 
