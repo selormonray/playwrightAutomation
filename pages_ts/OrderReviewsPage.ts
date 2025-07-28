@@ -30,6 +30,11 @@ export class OrdersReviewPage {
         for (let i = 0; i < optionsCount; ++i) {
             let text: any;
             text = await this.dropdown.locator("button").nth(i).textContent();
+            if (text.trim() === countryName) {
+                await this.dropdown.locator("button").nth(i).click();
+                break;
+            }
+
 
         }
 
