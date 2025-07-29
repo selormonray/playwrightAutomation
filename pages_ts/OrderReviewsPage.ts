@@ -45,6 +45,7 @@ export class OrdersReviewPage {
 
     async SubmitAndGetOrderId() {
         await this.submit.click();
+        await expect(this.orderConfirmationText).toHaveText(" Thankyou for the order. ");
     }
 
 
