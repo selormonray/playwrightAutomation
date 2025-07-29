@@ -2,7 +2,6 @@ import {expect, Locator, Page} from "@playwright/test";
 
 export class OrdersReviewPage {
 
-
     country: Locator;
     dropdown: Locator;
     emailId: Locator;
@@ -19,7 +18,6 @@ export class OrdersReviewPage {
         this.submit = page.locator(".action__submit");
         this.orderConfirmationText = page.locator(".hero-primary");
         this.orderId = page.locator(".em-spacer-1 .ng-star-inserted");
-
     }
 
     async searchCountryAndSelect(countryCode: string, countryName: string) {
@@ -34,9 +32,7 @@ export class OrdersReviewPage {
                 await this.dropdown.locator("button").nth(i).click();
                 break;
             }
-
         }
-
     }
 
     async VerifyEmailId(username: string) {
@@ -48,10 +44,6 @@ export class OrdersReviewPage {
         await expect(this.orderConfirmationText).toHaveText(" Thankyou for the order. ");
         return await this.orderId.textContent();
     }
-
-
-
-
 }
 
 module.exports = {OrdersReviewPage};
