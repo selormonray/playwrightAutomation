@@ -1,4 +1,4 @@
-import {Locator, Page} from "@playwright/test";
+import {expect, Locator, Page} from "@playwright/test";
 
 export class OrdersReviewPage {
 
@@ -46,6 +46,7 @@ export class OrdersReviewPage {
     async SubmitAndGetOrderId() {
         await this.submit.click();
         await expect(this.orderConfirmationText).toHaveText(" Thankyou for the order. ");
+        return await this.orderId.textContent();
     }
 
 
