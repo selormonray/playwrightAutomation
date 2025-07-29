@@ -44,7 +44,7 @@ export class OrdersReviewPage {
     }
 
     async SubmitAndGetOrderId() {
-
+        await this.submit.click();
     }
 
 
