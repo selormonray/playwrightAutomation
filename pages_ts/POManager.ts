@@ -8,6 +8,13 @@ export class POManager {
     page: Page;
 
 
+    constructor(page: Page) {
+        this.page = page;
+
+
+    }
+
+
 }
 
 module.exports.POManager = {POManager};
