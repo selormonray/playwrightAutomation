@@ -10,7 +10,7 @@ export class POManager {
 
     constructor(page: Page) {
         this.page = page;
-
+        this.loginPage = new LoginPage(this.page);
 
     }
 
