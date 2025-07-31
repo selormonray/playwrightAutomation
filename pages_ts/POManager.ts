@@ -13,6 +13,7 @@ export class POManager {
         this.loginPage = new LoginPage(this.page);
 
         this.dashboardPage = new DashboardPage(this.page);
+        this.ordersHistoryPage = new OrdersHistoryPage(this.page);
 
     }
 
