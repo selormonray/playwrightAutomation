@@ -15,6 +15,8 @@ export class POManager {
         this.dashboardPage = new DashboardPage(this.page);
         this.ordersHistoryPage = new OrdersHistoryPage(this.page);
 
+        this.ordersReviewPage = new OrdersReviewPage(this.page);
+
     }
 
 
