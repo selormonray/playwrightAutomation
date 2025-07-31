@@ -17,6 +17,8 @@ export class POManager {
 
         this.ordersReviewPage = new OrdersReviewPage(this.page);
 
+        this.cartPage = new CartPage(this.page);
+
     }
 
 
