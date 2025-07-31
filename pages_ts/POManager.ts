@@ -11,17 +11,12 @@ export class POManager {
     constructor(page: Page) {
         this.page = page;
         this.loginPage = new LoginPage(this.page);
-
         this.dashboardPage = new DashboardPage(this.page);
         this.ordersHistoryPage = new OrdersHistoryPage(this.page);
-
         this.ordersReviewPage = new OrdersReviewPage(this.page);
-
         this.cartPage = new CartPage(this.page);
 
     }
-
-
 }
 
 module.exports.POManager = {POManager};
