@@ -17,6 +17,10 @@ export class POManager {
         this.cartPage = new CartPage(this.page);
 
     }
+
+    getLoginPage() {
+        return this.loginPage;
+    }
 }
 
 module.exports.POManager = {POManager};
