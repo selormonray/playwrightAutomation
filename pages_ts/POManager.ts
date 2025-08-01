@@ -21,6 +21,10 @@ export class POManager {
     getLoginPage() {
         return this.loginPage;
     }
+
+    getCartPage() {
+        return this.cartPage;
+    }
 }
 
 module.exports.POManager = {POManager};
