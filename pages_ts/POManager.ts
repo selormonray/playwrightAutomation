@@ -1,5 +1,11 @@
-export class POManager {
+import {LoginPage} from './LoginPage';
+import {DashboardPage} from './DashboardPage';
+import {OrdersHistoryPage} from './OrdersHistoryPage';
+import {OrdersReviewPage} from './OrdersReviewPage';
+import {CartPage} from './CartPage';
+import {Page} from '@playwright/test';
 
+export class POManager {
     loginPage: LoginPage;
     dashboardPage: DashboardPage;
     ordersHistoryPage: OrdersHistoryPage;
@@ -16,6 +22,7 @@ export class POManager {
         this.ordersReviewPage = new OrdersReviewPage(this.page);
         this.cartPage = new CartPage(this.page);
 
+
     }
 
     getLoginPage() {
@@ -29,6 +36,14 @@ export class POManager {
     getDashboardPage() {
         return this.dashboardPage;
     }
+
+    getOrdersHistoryPage() {
+        return this.ordersHistoryPage;
+    }
+
+    getOrdersReviewPage() {
+        return this.ordersReviewPage;
+    }
 }
 
-module.exports.POManager = {POManager};
+module.exports = {POManager};
