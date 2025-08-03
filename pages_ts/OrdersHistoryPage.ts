@@ -17,7 +17,10 @@ export class OrdersHistoryPage {
         await this.ordersTable.waitFor();
         for (let i = 0; i < await this.rows.count(); ++i) {
             const rowOrderId = await this.rows.nth(i).locator("th").textContent();
-
+            if (rowOrderId && orderId.includes(rowOrderId)) {
+                await this.rows.nth(i).locator("button").first().click();
+                break;
+            }
         }
     }
 
