@@ -2,7 +2,6 @@ class OrdersReviewPage {
     constructor(page) {
         this.ordersSelector = page.locator(".btn.btn-custom[routerlink='/dashboard/myorders']");
         this.orderListSelector = page.locator("tbody .ng-star-inserted");
-        this.orderIdSelector = page.locator("label[class='ng-star-inserted']");
 
     }
 
