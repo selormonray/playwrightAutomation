@@ -55,7 +55,6 @@ test("Client App Login", async () => {
     const orderListSelector = page.locator("tbody .ng-star-inserted");
     const orderIdSelector = page.locator("label[class='ng-star-inserted']");
     const viewButtonSelectors = page.locator("tbody .btn.btn-primary");
-    const orderSummaryOrderIdSelector = page.locator(".col-text.-main");
 
     await products.last().waitFor();
     const productsCount = await products.count();
