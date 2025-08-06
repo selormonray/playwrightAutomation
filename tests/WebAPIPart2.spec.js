@@ -41,7 +41,6 @@ test("Client App Login", async () => {
 
     const products = page.locator(".card-body");
     const productName = "IPHONE 13 PRO";
-    const successSelector = page.locator("div[aria-label='Product Added To Cart']");
     const cartSelector = page.locator("[routerlink='/dashboard/cart']");
     const cartItemSelector = page.locator("div li");
     const checkoutButton = page.locator("li[class='totalRow'] button[type='button']");
