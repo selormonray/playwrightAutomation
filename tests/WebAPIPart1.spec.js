@@ -17,3 +17,9 @@ test.beforeAll(async ({request}) => {
     const apiUtils = new APIUtils(request, loginPayload);
     apiResponse = await apiUtils.createOrder(orderPayload);
 
+    expect(apiResponse).toMatchObject({
+        token: expect.any(String),
+        orderID: expect.any(String),
+    });
+});
+
