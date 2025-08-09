@@ -23,3 +23,5 @@ test.beforeAll(async ({request}) => {
     });
 });
 
+test("Place Order", async ({page}) => {
+// Inject token into local storage
