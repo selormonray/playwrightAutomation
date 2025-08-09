@@ -25,3 +25,17 @@ test.beforeAll(async ({request}) => {
 
 test("Place Order", async ({page}) => {
 // Inject token into local storage
+
+    await page.addInitScript((token) => {
+        window.localStorage.setItem("token", token);
+    }, apiResponse.token);
+
+    await page.goto("https://rahulshettyacademy.com/client");
+
+    // Locators
+    const automationPracticeText = page.locator("div[class='left mt-1'] p");
+    const redBlinkText = page.locator(".m-2.blink_me");
+    const ordersButton = page.locator(".btn.btn-custom[routerlink='/dashboard/myorders']");
+    const orderList = page.locator("tbody .ng-star-inserted");
+    const rows = page.locator("tbody tr");
+
