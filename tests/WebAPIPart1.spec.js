@@ -39,3 +39,28 @@ test("Place Order", async ({page}) => {
     const orderList = page.locator("tbody .ng-star-inserted");
     const rows = page.locator("tbody tr");
 
+    // Assertions for UI elements
+    await expect(automationPracticeText).toContainText("Automation Practice");
+    await expect(redBlinkText).toHaveText("User can only see maximum 9 products on a page");
+
+    // Navigate to orders
+    await ordersButton.click();
+    await orderList.first().waitFor();
+
+    // Find and open the matching order
+    let orderFound = false;
+    for (let i = 0; i < await rows.count(); i++) {
+        const rowOrderId = await rows.nth(i).locator("th").textContent();
+        if (apiResponse.orderID && rowOrderId.includes(apiResponse.orderID)) {
+            await rows.nth(i).locator("button").first().click();
+            orderFound = true;
+            break;
+        }
+    }
+
+    expect(orderFound).toBeTruthy();
+
+    // Verify order details
+    const orderDetailsId = await page.locator(".col-text").textContent();
+    expect(apiResponse.orderID.includes(orderDetailsId)).toBeTruthy();
+});
