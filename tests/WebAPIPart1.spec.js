@@ -49,10 +49,14 @@ test("Place Order", async ({page}) => {
 
     // Find and open the matching order
     let orderFound = false;
-    for (let i = 0; i < await rows.count(); i++) {
-        const rowOrderId = await rows.nth(i).locator("th").textContent();
+    const rowCount = await rows.count();
+
+    for (let i = 0; i < rowCount; i++) {
+        const row = rows.nth(i);
+        const rowOrderId = await row.locator("th").textContent();
+
         if (apiResponse.orderID && rowOrderId.includes(apiResponse.orderID)) {
-            await rows.nth(i).locator("button").first().click();
+            await row.locator("button").first().click();
             orderFound = true;
             break;
         }
