@@ -7,7 +7,7 @@ export class LoginPage {
     page: Page;
 
     constructor(page: Page) {
-
+        this.page = page;
 
     }
 
