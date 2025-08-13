@@ -1,9 +1,9 @@
 import {LoginPage} from './LoginPage';
 import {DashboardPage} from './DashboardPage';
 import {OrdersHistoryPage} from './OrdersHistoryPage';
-import {OrdersReviewPage} from './OrdersReviewPage';
 import {CartPage} from './CartPage';
 import {Page} from '@playwright/test';
+import {OrdersReviewPage} from "./OrderReviewsPage";
 
 export class POManager {
     loginPage: LoginPage;
