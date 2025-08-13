@@ -10,6 +10,7 @@ export class LoginPage {
         this.page = page;
         this.signInbutton = page.locator("[value='Login']");
         this.userName = page.locator("#userEmail");
+        this.password = page.locator("#userPassword");
 
     }
 
