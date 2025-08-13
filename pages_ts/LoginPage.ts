@@ -6,6 +6,11 @@ export class LoginPage {
     password: Locator;
     page: Page;
 
+    constructor(page: Page) {
+
+
+    }
+
 
 }
 
