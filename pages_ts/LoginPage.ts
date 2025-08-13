@@ -8,6 +8,7 @@ export class LoginPage {
 
     constructor(page: Page) {
         this.page = page;
+        this.signInbutton = page.locator("[value='Login']");
 
     }
 
