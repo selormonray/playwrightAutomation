@@ -14,7 +14,6 @@ export class LoginPage {
     }
 
     async goTo() {
-        await this.page.goto("https://rahulshettyacademy.com/client");
     }
 
 
