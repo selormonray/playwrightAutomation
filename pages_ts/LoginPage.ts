@@ -17,6 +17,8 @@ export class LoginPage {
         await this.page.goto("https://rahulshettyacademy.com/client");
     }
 
+    async validLogin(username: string, password: string)
+
 
 }
 
