@@ -11,7 +11,10 @@ export class LoginPage {
         this.signInbutton = page.locator("[value='Login']");
         this.userName = page.locator("#userEmail");
         this.password = page.locator("#userPassword");
+    }
 
+    async goTo() {
+        await this.page.goto("https://rahulshettyacademy.com/client");
     }
 
 
