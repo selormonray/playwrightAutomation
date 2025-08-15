@@ -23,8 +23,6 @@ export class LoginPage {
         await this.signInbutton.click();
         await this.page.waitForLoadState('networkidle');
     }
-
-
 }
 
 module.exports = {LoginPage};
