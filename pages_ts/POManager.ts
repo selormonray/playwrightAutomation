@@ -35,9 +35,6 @@ export class POManager {
         return this.dashboardPage;
     }
 
-    getOrdersHistoryPage() {
-        return this.ordersHistoryPage;
-    }
 
     getOrdersReviewPage() {
         return this.ordersReviewPage;
