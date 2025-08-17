@@ -39,7 +39,9 @@ export class POManager {
         return this.ordersHistoryPage;
     }
 
-
+    getOrdersReviewPage() {
+        return this.ordersReviewPage;
+    }
 }
 
 module.exports = {POManager};
