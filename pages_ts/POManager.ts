@@ -3,7 +3,7 @@ import {DashboardPage} from './DashboardPage';
 import {OrdersHistoryPage} from './OrdersHistoryPage';
 import {CartPage} from './CartPage';
 import {Page} from '@playwright/test';
-
+import {OrdersReviewPage} from "./OrderReviewsPage";
 
 export class POManager {
     loginPage: LoginPage;
