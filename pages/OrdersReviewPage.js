@@ -20,7 +20,6 @@ class OrdersReviewPage {
     }
 
     async placeOrder() {
-        await this.ordersSelector.click();
         await this.orderListSelector.first().waitFor();
     }
 
