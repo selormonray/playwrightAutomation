@@ -10,6 +10,7 @@ export class POManager {
     dashboardPage: DashboardPage;
     ordersHistoryPage: OrdersHistoryPage;
     ordersReviewPage: OrdersReviewPage;
+    cartPage: CartPage;
     page: Page;
 
 
