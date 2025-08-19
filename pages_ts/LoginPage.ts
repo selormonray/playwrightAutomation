@@ -18,10 +18,7 @@ export class LoginPage {
     }
 
     async validLogin(username: string, password: string) {
-        await this.userName.fill(username);
-        await this.password.fill(password);
-        await this.signInbutton.click();
-        await this.page.waitForLoadState('networkidle');
+
     }
 }
 
