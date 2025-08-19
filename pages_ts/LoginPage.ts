@@ -18,8 +18,7 @@ export class LoginPage {
     }
 
     async validLogin(username: string, password: string) {
-
-    }
+        await this.userName.fill(username);
 }
 
 module.exports = {LoginPage};
