@@ -11,6 +11,8 @@ test("@Web Client App Login", async ({page}) => {
     const loginPage = poManager.getLoginPage();
     const dashboardPage = poManager.getDashboardPage();
     const cartPage = poManager.getCartPage();
+    const checkoutPage = poManager.getCheckoutPage();
+    const ordersReviewPage = poManager.getOrdersReviewPage();
 
     await dashboardPage.dashBoardPageVerifications(page);
     await dashboardPage.searchAndAddProductsToCart(userDetailsDataSet.productName);
