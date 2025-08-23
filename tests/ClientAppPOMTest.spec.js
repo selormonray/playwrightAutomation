@@ -13,6 +13,8 @@ test("@Web Client App Login", async ({page}) => {
     const cartPage = poManager.getCartPage();
     const checkoutPage = poManager.getCheckoutPage();
     const ordersReviewPage = poManager.getOrdersReviewPage();
+    const orderHistoryPage = poManager.getOrdersHistoryPage();
+    await loginPage.goTo();
 
     await dashboardPage.dashBoardPageVerifications(page);
     await dashboardPage.searchAndAddProductsToCart(userDetailsDataSet.productName);
