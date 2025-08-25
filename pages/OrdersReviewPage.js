@@ -19,6 +19,9 @@ class OrdersReviewPage {
         }
     }
 
+    async placeOrder() {
+
+    }
 
 }
 
