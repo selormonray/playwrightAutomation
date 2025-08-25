@@ -20,7 +20,7 @@ class OrdersReviewPage {
     }
 
     async placeOrder() {
-
+        await this.ordersSelector.click();
     }
 
 }
