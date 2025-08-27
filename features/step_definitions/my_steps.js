@@ -25,7 +25,7 @@ Given('a login to the ecommerce application using {string} and {string}', async 
 });
 
 When('I add {string} to the cart', async function (productName) {
-
+    const dashboardPage = poManager.getDashboardPage();
 });
 Then('Verify {string} is added to the cart', async function (productName) {
     const cartPage = poManager.getCartPage();
