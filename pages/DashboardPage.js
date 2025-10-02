@@ -17,8 +17,9 @@ class DashboardPage {
         const productsCount = await this.products.count();
         // loop through the products on the page and click on the product you desire
         for (let i = 0; i < productsCount; i++) {
-            if (await this.products.nth(i).locator("b").textContent() === productName) {
-                await this.products.nth(i).locator("text= Add To Cart").click();
+            const productText = await this.products.nth(i).locator("b").innerText();
+            if (productText.trim().toLowerCase() === productName.trim().toLowerCase()) {
+                await this.products.nth(i).getByText("Add To Cart").click();
                 break;
             }
         }
