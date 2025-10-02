@@ -3,6 +3,8 @@ const {POManager} = require("../../pages/POManager");
 const {chromium} = require("@playwright/test");
 const loginDataSet = JSON.parse(JSON.stringify(require("../../DTOs/loginDTO.json")));
 const userDetailsDataSet = JSON.parse(JSON.stringify(require("../../DTOs/userDetailsDTO.json")));
+const {setDefaultTimeout} = require("@cucumber/cucumber");
+setDefaultTimeout(60 * 1000); // 60 seconds
 
 let browser, context, page, poManager;
 let orderId;
